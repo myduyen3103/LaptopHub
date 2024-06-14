@@ -61,7 +61,8 @@ CREATE TABLE Supplier (
     supplierId INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
     companyName NVARCHAR(100) NOT NULL UNIQUE,
     homePage NVARCHAR(255),
-    country NVARCHAR(100)
+    country NVARCHAR(100),
+    imageLogo NVARCHAR(MAX)
 );
 
 -- Create Category Table
