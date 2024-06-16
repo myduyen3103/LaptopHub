@@ -115,38 +115,38 @@ CREATE TABLE ImageProduct (
  -- insert customer account into User Table
 insert into [User] (userName,fullName,password,roleId,image,birthday,address,phone,status)
 values
-(N'anh', N'Quốc Anh', 'password123', 1, NULL, '2004-05-10', N'Đà Nẵng', N'0945548214', 1),
-(N'thang', N'Minh Thắng', 'password123', 1, NULL, '2004-04-24', N'Đà Nẵng', N'0945362464', 1),
-(N'hung', N'Vũ Hưng', 'password123', 1, NULL, '2004-12-04', N'Đà Nẵng', N'0925548249', 1),
-(N'vu', N'Nguyên Vũ', 'password123', 1, NULL, '2004-06-21', N'Huế', N'0945612355', 1),
-(N'duy', N'Đông Duy', 'password123', 1, NULL, '2002-05-23', N'Hà Nội', N'0975165486', 1),
-(N'khiem', N'Viết Khiêm', 'password123', 1, NULL, '2004-05-14', N'Sài Gòn', N'0961451426', 1),
-(N'huy', N'Hoảng Huy', 'password123', 1, NULL, '2004-06-17', N'Quảng Bình', N'0987458474', 1),
-(N'duong', N'Hoàng Dương', 'password123', 1, NULL, '2004-09-04', N'Nghệ An', N'0931414547', 1),
-(N'tuan', N'Quốc Tuấn', 'password123', 1, NULL, '2004-02-08', N'Hà Tĩnh', N'0465321884', 1),
-(N'cuong', N'Minh Cường', 'password123', 1, NULL, '2004-01-02', N'daklak', N'0964668561', 1),
-(N'dung', N'Mạnh Dũng', 'password123', 1, NULL, '2004-06-17', N'Hà Nội', N'0986165454', 1),
-(N'bao', N'Đình Bảo', 'password123', 1, NULL, '2004-07-18', N'Quảng Nam', N'0978946512', 1),
-(N'dong', N'Trịnh Đông', 'password123', 1, NULL, '2004-03-25', N'Nghệ An', N'0465123654', 1),
-(N'anhh', N'Mai Anh', 'password123', 1, NULL, '2004-07-29', N'Kỳ Anh', N'0915668512', 1),
-(N'linh', N'Dương Linh', 'password123', 1, NULL, '2004-02-01', N'Hà Tĩnh', N'0916548756', 1),
-(N'suong', N'Huệ Sương', 'password123', 1, NULL, '2004-04-08', N'Cà Mau', N'0951326511', 1),
-(N'nhy', N'Yến Nhy', 'password123', 1, NULL, '2004-06-13', N'Huế', N'0946532165', 1),
-(N'quynh', N'Thúy Quỳnh', 'password123', 1, NULL, '2004-04-10', N'Hà Nội', N'0948532145', 1),
-(N'ha', N'Thu Hà', 'password123', 1, NULL, '2004-12-11', N'DakLak', N'0921355454', 1),
-(N'tung', N'Sơn Tùng', 'password123', 1, NULL, '2004-10-22', N'Sài Gòn', N'0945784654', 1),
-(N'chau', N'Châu Bùi', 'password123', 1, NULL, '2004-11-26', N'Quảng Bình', N'0987965491', 1),
-(N'nhi', N'Đoàn Nhi', 'password123', 1, NULL, '2004-10-12', N'Đà Nẵng', N'0942357946', 1),
-(N'tu', N'Cẩm Tú', 'password123', 1, NULL, '2004-03-28', N'Hà Nội', N'0945548214', 1);
+(N'anh', N'Quốc Anh', 'password123', 1, https://github.com/myduyen3103/LaptopHub/blob/master/image/avatar/avatar%20-default.jpg?raw=true, '2004-05-10', N'Đà Nẵng', N'0945548214', 1),
+(N'thang', N'Minh Thắng', 'password123', 1, https://github.com/myduyen3103/LaptopHub/blob/master/image/avatar/avatar%20-default.jpg?raw=true, '2004-04-24', N'Đà Nẵng', N'0945362464', 1),
+(N'hung', N'Vũ Hưng', 'password123', 1, https://github.com/myduyen3103/LaptopHub/blob/master/image/avatar/avatar%20-default.jpg?raw=true, '2004-12-04', N'Đà Nẵng', N'0925548249', 1),
+(N'vu', N'Nguyên Vũ', 'password123', 1, https://github.com/myduyen3103/LaptopHub/blob/master/image/avatar/avatar%20-default.jpg?raw=true, '2004-06-21', N'Huế', N'0945612355', 1),
+(N'duy', N'Đông Duy', 'password123', 1, https://github.com/myduyen3103/LaptopHub/blob/master/image/avatar/avatar%20-default.jpg?raw=true, '2002-05-23', N'Hà Nội', N'0975165486', 1),
+(N'khiem', N'Viết Khiêm', 'password123', 1, https://github.com/myduyen3103/LaptopHub/blob/master/image/avatar/avatar%20-default.jpg?raw=true, '2004-05-14', N'Sài Gòn', N'0961451426', 1),
+(N'huy', N'Hoảng Huy', 'password123', 1, https://github.com/myduyen3103/LaptopHub/blob/master/image/avatar/avatar%20-default.jpg?raw=true, '2004-06-17', N'Quảng Bình', N'0987458474', 1),
+(N'duong', N'Hoàng Dương', 'password123', 1, https://github.com/myduyen3103/LaptopHub/blob/master/image/avatar/avatar%20-default.jpg?raw=true, '2004-09-04', N'Nghệ An', N'0931414547', 1),
+(N'tuan', N'Quốc Tuấn', 'password123', 1, https://github.com/myduyen3103/LaptopHub/blob/master/image/avatar/avatar%20-default.jpg?raw=true, '2004-02-08', N'Hà Tĩnh', N'0465321884', 1),
+(N'cuong', N'Minh Cường', 'password123', 1, https://github.com/myduyen3103/LaptopHub/blob/master/image/avatar/avatar%20-default.jpg?raw=true, '2004-01-02', N'daklak', N'0964668561', 1),
+(N'dung', N'Mạnh Dũng', 'password123', 1, https://github.com/myduyen3103/LaptopHub/blob/master/image/avatar/avatar%20-default.jpg?raw=true, '2004-06-17', N'Hà Nội', N'0986165454', 1),
+(N'bao', N'Đình Bảo', 'password123', 1, https://github.com/myduyen3103/LaptopHub/blob/master/image/avatar/avatar%20-default.jpg?raw=true, '2004-07-18', N'Quảng Nam', N'0978946512', 1),
+(N'dong', N'Trịnh Đông', 'password123', 1, https://github.com/myduyen3103/LaptopHub/blob/master/image/avatar/avatar%20-default.jpg?raw=true, '2004-03-25', N'Nghệ An', N'0465123654', 1),
+(N'anhh', N'Mai Anh', 'password123', 1, https://github.com/myduyen3103/LaptopHub/blob/master/image/avatar/avatar%20-default.jpg?raw=true, '2004-07-29', N'Kỳ Anh', N'0915668512', 1),
+(N'linh', N'Dương Linh', 'password123', 1, https://github.com/myduyen3103/LaptopHub/blob/master/image/avatar/avatar%20-default.jpg?raw=true, '2004-02-01', N'Hà Tĩnh', N'0916548756', 1),
+(N'suong', N'Huệ Sương', 'password123', 1, https://github.com/myduyen3103/LaptopHub/blob/master/image/avatar/avatar%20-default.jpg?raw=true, '2004-04-08', N'Cà Mau', N'0951326511', 1),
+(N'nhy', N'Yến Nhy', 'password123', 1, https://github.com/myduyen3103/LaptopHub/blob/master/image/avatar/avatar%20-default.jpg?raw=true, '2004-06-13', N'Huế', N'0946532165', 1),
+(N'quynh', N'Thúy Quỳnh', 'password123', 1, https://github.com/myduyen3103/LaptopHub/blob/master/image/avatar/avatar%20-default.jpg?raw=true, '2004-04-10', N'Hà Nội', N'0948532145', 1),
+(N'ha', N'Thu Hà', 'password123', 1, https://github.com/myduyen3103/LaptopHub/blob/master/image/avatar/avatar%20-default.jpg?raw=true, '2004-12-11', N'DakLak', N'0921355454', 1),
+(N'tung', N'Sơn Tùng', 'password123', 1, https://github.com/myduyen3103/LaptopHub/blob/master/image/avatar/avatar%20-default.jpg?raw=true, '2004-10-22', N'Sài Gòn', N'0945784654', 1),
+(N'chau', N'Châu Bùi', 'password123', 1, https://github.com/myduyen3103/LaptopHub/blob/master/image/avatar/avatar%20-default.jpg?raw=true, '2004-11-26', N'Quảng Bình', N'0987965491', 1),
+(N'nhi', N'Đoàn Nhi', 'password123', 1, https://github.com/myduyen3103/LaptopHub/blob/master/image/avatar/avatar%20-default.jpg?raw=true, '2004-10-12', N'Đà Nẵng', N'0942357946', 1),
+(N'tu', N'Cẩm Tú', 'password123', 1, https://github.com/myduyen3103/LaptopHub/blob/master/image/avatar/avatar%20-default.jpg?raw=true, '2004-03-28', N'Hà Nội', N'0945548214', 1);
 go
 -- insert admin account into User table
 insert into [User](userName,fullName,password,roleId,image,birthday,address,phone,status)
 values
-(N'Admin1', N'Kim Tú', 'password123', 2, NULL, '2004-06-04', N'Đà Nẵng', N'0942216514', 1),
-(N'Admin2', N'Mỹ Duyên', 'password123', 2, NULL, '2004-03-28', N'Đà Nẵng', N'0949865445', 1),
-(N'Admin3', N'Nguyên Vũ', 'password123', 2, NULL, '2004-07-01', N'Đà Nẵng', N'0949352145', 1),
-(N'Admin4', N'Hoàng Dương', 'password123', 2, NULL, '2004-09-13', N'Đà Nẵng', N'0978621445', 1),
-(N'Admin5', N'Đình Quang', 'password123', 2, NULL, '2004-08-23', N'Đà Nẵng', N'0946543151', 1);
+(N'Admin1', N'Kim Tú', 'password123', 2, https://github.com/myduyen3103/LaptopHub/blob/master/image/avatar/avatar%20-default.jpg?raw=true, '2004-06-04', N'Đà Nẵng', N'0942216514', 1),
+(N'Admin2', N'Mỹ Duyên', 'password123', 2, https://github.com/myduyen3103/LaptopHub/blob/master/image/avatar/avatar%20-default.jpg?raw=true, '2004-03-28', N'Đà Nẵng', N'0949865445', 1),
+(N'Admin3', N'Nguyên Vũ', 'password123', 2, https://github.com/myduyen3103/LaptopHub/blob/master/image/avatar/avatar%20-default.jpg?raw=true, '2004-07-01', N'Đà Nẵng', N'0949352145', 1),
+(N'Admin4', N'Hoàng Dương', 'password123', 2, https://github.com/myduyen3103/LaptopHub/blob/master/image/avatar/avatar%20-default.jpg?raw=true, '2004-09-13', N'Đà Nẵng', N'0978621445', 1),
+(N'Admin5', N'Đình Quang', 'password123', 2, https://github.com/myduyen3103/LaptopHub/blob/master/image/avatar/avatar%20-default.jpg?raw=true, '2004-08-23', N'Đà Nẵng', N'0946543151', 1);
 -- Insert Balance into Wallet Table
 INSERT INTO Wallet (userName, balance) VALUES
 (N'anh', 10000000.0),
