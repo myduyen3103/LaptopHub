@@ -62,7 +62,8 @@ CREATE TABLE Supplier (
     companyName NVARCHAR(100) NOT NULL UNIQUE,
     homePage NVARCHAR(255),
     country NVARCHAR(100),
-	imageLogo NVARCHAR(MAX)
+    imageLogo NVARCHAR(MAX)
+    
 );
 
 -- Create Category Table
