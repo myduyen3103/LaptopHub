@@ -1,12 +1,3 @@
-<%-- 
-    Document   : footer
-    Created on : Jun 16, 2024, 8:59:28 AM
-    Author     : admin
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
 
 <head>
     <meta charset="utf-8">
@@ -153,5 +144,3 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
 </body>
-
-</html>
