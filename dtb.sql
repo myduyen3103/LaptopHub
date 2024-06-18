@@ -1662,3 +1662,326 @@ VALUES (28,'./images/products/prd28/left.jpg', 'Bên trái');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
 VALUES (28,'./images/products/prd28/back.jpg', 'Mặt sau');
+/*Insert PC - LENOVO 5-3*/
+--Insert Product 29
+INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
+					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
+VALUES (5, 3, 'PC Lenovo ThinkCentre Neo 50S Gen4 12JH0006VA', 100, 14990000, 64, 36, 5, 0,
+'MÔ TẢ SẢN PHẨM</br></br>
+BỘ XỬ LÝ</br></br>
+Dòng CPU	Core i5</br>
+Công nghệ CPU	</br>
+Mã CPU	Core i5-13400</br>
+Tốc độ CPU	2.50 GHz</br>
+Tần số turbo tối đa	4.60 GHz</br>
+Số lõi CPU	10 Cores</br>
+Số luồng	16 Threads</br>
+Bộ nhớ đệm	20Mb</br>
+Chipset	Intel B660</br>
+BỘ NHỚ RAM</br>
+Dung lượng RAM	8Gb</br>
+Loại RAM	DDR4</br>
+Tốc độ Bus RAM	3200 MHz</br>
+Hỗ trợ RAM tối đa	64GB</br>
+Khe cắm RAM	2</br>
+Card đồ họa	Intel UHD Graphics 730</br>
+Card tích hợp	VGA onboard</br>
+Ổ CỨNG</br>
+Dung lượng ổ cứng	512GB</br>
+Loại ổ cứng	SSD</br>
+Chuẩn ổ cứng	512GB SSD M.2 2280 PCIe® 4.0x4 NVMe®</br>
+Up to two drives, 1x 3.5 inch HDD + 1x M.2 SSD</br>
+• 3.5 inch HDD up to 2TB</br>
+• M.2 SSD up to 1TB</br>
+Ổ quang	NO DVD</br>
+KẾT NỐI</br>
+Kết nối không dây	Intel® Wi-Fi® 6 AX201, 11ax 2x2 + BT5.1</br>
+Thông số (Lan/Wireless)	Integrated 100/1000M</br>
+Cổng giao tiếp trước	1x USB-C® 3.2 Gen 1 (support data transfer and 5V@3A charging)</br>
+2x USB 3.2 Gen 1</br>
+1x headphone / microphone combo jack (3.5mm)</br>
+1x microphone (3.5mm)</br>
+Cổng giao tiếp sau	2x USB 2.0</br>
+2x USB 3.2 Gen 1 (one supports Smart Power On)</br>
+1x HDMI® 2.1 TMDS</br>
+1x DisplayPort™ 1.4</br>
+1x VGA</br>
+1x Ethernet (RJ-45)</br>
+1x line-out (3.5mm)</br>
+Khe cắm mở rộng	1 PCIe® 4.0 x16, low-profie (length < 167.65mm, height < 68.90mm)</br>
+1PCIe® 3.0 x1, low-profie (length < 167.65mm, height < 68.90mm)</br>
+2 M.2 slots (one for WLAN, one for SSD)</br>
+PHẦN MỀM</br>
+Hệ điều hành	NoOS</br>
+THÔNG TIN KHÁC</br>
+Bộ nguồn	180W 85%</br>
+Phụ kiện	USB Calliope Keyboard, Black, English</br>
+Kiểu dáng	Form Factor SFF (7.4L)</br>
+Kích thước	100 x 308 x 274.8 mm (3.9 x 12.1 x 10.8 inches)</br>
+Trọng lượng	Khoảng 4,5 kg (9,9 lbs)</br>',
+'2023-09-12', 0.19, 1);
+
+-- Insert ImageProduct 29
+INSERT INTO ImageProduct(productId, imageUrl, description)
+VALUES (29,'./images/products/prd29/general.jpg', 'Thông tin tổng quát');
+
+INSERT INTO ImageProduct(productId, imageUrl, description)
+VALUES (29,'./images/products/prd29/front.jpg', 'Mặt trước');
+
+INSERT INTO ImageProduct(productId, imageUrl, description)
+VALUES (29,'./images/products/prd29/right.jpg', 'Bên phải');
+
+INSERT INTO ImageProduct(productId, imageUrl, description)
+VALUES (29,'./images/products/prd29/left.jpg', 'Bên trái');
+
+INSERT INTO ImageProduct(productId, imageUrl, description)
+VALUES (29,'./images/products/prd29/back.jpg', 'Mặt sau');
+
+--Insert prduct 30
+INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
+					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
+VALUES (5, 3, 'Mini PC Lenovo ThinkCentre M70q gen 3 tiny i5-12500T', 100, 9990000, 64, 36, 5, 0,
+'MÔ TẢ SẢN PHẨM</br></br>
+BỘ XỬ LÝ</br></br>
+Dòng CPU	Core i5</br>
+Công nghệ CPU	</br>
+Mã CPU	Core i5-13400</br>
+Tốc độ CPU	2.50 GHz</br>
+Tần số turbo tối đa	4.60 GHz</br>
+Số lõi CPU	10 Cores</br>
+Số luồng	16 Threads</br>
+Bộ nhớ đệm	20Mb</br>
+Chipset	Intel B660</br>
+BỘ NHỚ RAM</br>
+Dung lượng RAM	8Gb</br>
+Loại RAM	DDR4</br>
+Tốc độ Bus RAM	3200 MHz</br>
+Hỗ trợ RAM tối đa	64GB</br>
+Khe cắm RAM	2</br>
+Card đồ họa	Intel UHD Graphics 730</br>
+Card tích hợp	VGA onboard</br>
+Ổ CỨNG</br>
+Dung lượng ổ cứng	512GB</br>
+Loại ổ cứng	SSD</br>
+Chuẩn ổ cứng	512GB SSD M.2 2280 PCIe® 4.0x4 NVMe®</br>
+Up to two drives, 1x 3.5 inch HDD + 1x M.2 SSD</br>
+• 3.5 inch HDD up to 2TB</br>
+• M.2 SSD up to 1TB</br>
+Ổ quang	NO DVD</br>
+KẾT NỐI</br>
+Kết nối không dây	Intel® Wi-Fi® 6 AX201, 11ax 2x2 + BT5.1</br>
+Thông số (Lan/Wireless)	Integrated 100/1000M</br>
+Cổng giao tiếp trước	1x USB-C® 3.2 Gen 1 (support data transfer and 5V@3A charging)</br>
+2x USB 3.2 Gen 1</br>
+1x headphone / microphone combo jack (3.5mm)</br>
+1x microphone (3.5mm)</br>
+Cổng giao tiếp sau	2x USB 2.0</br>
+2x USB 3.2 Gen 1 (one supports Smart Power On)</br>
+1x HDMI® 2.1 TMDS</br>
+1x DisplayPort™ 1.4</br>
+1x VGA</br>
+1x Ethernet (RJ-45)</br>
+1x line-out (3.5mm)</br>
+Khe cắm mở rộng	1 PCIe® 4.0 x16, low-profie (length < 167.65mm, height < 68.90mm)</br>
+1PCIe® 3.0 x1, low-profie (length < 167.65mm, height < 68.90mm)</br>
+2 M.2 slots (one for WLAN, one for SSD)</br>
+PHẦN MỀM</br>
+Hệ điều hành	NoOS</br>
+THÔNG TIN KHÁC</br>
+Bộ nguồn	180W 85%</br>
+Phụ kiện	USB Calliope Keyboard, Black, English</br>
+Kiểu dáng	Form Factor SFF (7.4L)</br>
+Kích thước	100 x 308 x 274.8 mm (3.9 x 12.1 x 10.8 inches)</br>
+Trọng lượng	Khoảng 4,5 kg (9,9 lbs)</br>',
+'2023-11-12', 0.19, 1);
+
+-- Insert ImageProduct 30
+INSERT INTO ImageProduct(productId, imageUrl, description)
+VALUES (29,'./images/products/prd30/general.jpg', 'Thông tin tổng quát');
+
+INSERT INTO ImageProduct(productId, imageUrl, description)
+VALUES (30,'./images/products/prd30/front.jpg', 'Mặt trước');
+
+INSERT INTO ImageProduct(productId, imageUrl, description)
+VALUES (30,'./images/products/prd30/right.jpg', 'Bên phải');
+
+INSERT INTO ImageProduct(productId, imageUrl, description)
+VALUES (30,'./images/products/prd30/left.jpg', 'Bên trái');
+
+INSERT INTO ImageProduct(productId, imageUrl, description)
+VALUES (30,'./images/products/prd30/back.jpg', 'Mặt sau');
+
+/*Insert PC - DELL 1-3*/
+--Insert Product 31
+INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
+					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
+VALUES (1, 3, 'Case máy tính Dell Optiplex 3050 SFF core i5 6500', 100, 4614000, 64, 36, 5, 0,
+'MÔ TẢ SẢN PHẨM</br></br>
+BỘ XỬ LÝ</br></br>
+Dòng CPU	Core i5</br>
+Công nghệ CPU	</br>
+Mã CPU	Core i5-13400</br>
+Tốc độ CPU	2.50 GHz</br>
+Tần số turbo tối đa	4.60 GHz</br>
+Số lõi CPU	10 Cores</br>
+Số luồng	16 Threads</br>
+Bộ nhớ đệm	20Mb</br>
+Chipset	Intel B660</br>
+BỘ NHỚ RAM</br>
+Dung lượng RAM	8Gb</br>
+Loại RAM	DDR4</br>
+Tốc độ Bus RAM	3200 MHz</br>
+Hỗ trợ RAM tối đa	64GB</br>
+Khe cắm RAM	2</br>
+Card đồ họa	Intel UHD Graphics 730</br>
+Card tích hợp	VGA onboard</br>
+Ổ CỨNG</br>
+Dung lượng ổ cứng	512GB</br>
+Loại ổ cứng	SSD</br>
+Chuẩn ổ cứng	512GB SSD M.2 2280 PCIe® 4.0x4 NVMe®</br>
+Up to two drives, 1x 3.5 inch HDD + 1x M.2 SSD</br>
+• 3.5 inch HDD up to 2TB</br>
+• M.2 SSD up to 1TB</br>
+Ổ quang	NO DVD</br>
+KẾT NỐI</br>
+Kết nối không dây	Intel® Wi-Fi® 6 AX201, 11ax 2x2 + BT5.1</br>
+Thông số (Lan/Wireless)	Integrated 100/1000M</br>
+Cổng giao tiếp trước	1x USB-C® 3.2 Gen 1 (support data transfer and 5V@3A charging)</br>
+2x USB 3.2 Gen 1</br>
+1x headphone / microphone combo jack (3.5mm)</br>
+1x microphone (3.5mm)</br>
+Cổng giao tiếp sau	2x USB 2.0</br>
+2x USB 3.2 Gen 1 (one supports Smart Power On)</br>
+1x HDMI® 2.1 TMDS</br>
+1x DisplayPort™ 1.4</br>
+1x VGA</br>
+1x Ethernet (RJ-45)</br>
+1x line-out (3.5mm)</br>
+Khe cắm mở rộng	1 PCIe® 4.0 x16, low-profie (length < 167.65mm, height < 68.90mm)</br>
+1PCIe® 3.0 x1, low-profie (length < 167.65mm, height < 68.90mm)</br>
+2 M.2 slots (one for WLAN, one for SSD)</br>
+PHẦN MỀM</br>
+Hệ điều hành	NoOS</br>
+THÔNG TIN KHÁC</br>
+Bộ nguồn	180W 85%</br>
+Phụ kiện	USB Calliope Keyboard, Black, English</br>
+Kiểu dáng	Form Factor SFF (7.4L)</br>
+Kích thước	100 x 308 x 274.8 mm (3.9 x 12.1 x 10.8 inches)</br>
+Trọng lượng	Khoảng 4,5 kg (9,9 lbs)</br>',
+'2022-09-12', 0.25, 1);
+
+-- Insert ImageProduct 31
+INSERT INTO ImageProduct(productId, imageUrl, description)
+VALUES (31,'./images/products/prd31/general.jpg', 'Thông tin tổng quát');
+
+INSERT INTO ImageProduct(productId, imageUrl, description)
+VALUES (31,'./images/products/prd31/front.jpg', 'Mặt trước');
+
+INSERT INTO ImageProduct(productId, imageUrl, description)
+VALUES (31,'./images/products/prd31/right.jpg', 'Bên phải');
+
+INSERT INTO ImageProduct(productId, imageUrl, description)
+VALUES (31,'./images/products/prd31/left.jpg', 'Bên trái');
+
+INSERT INTO ImageProduct(productId, imageUrl, description)
+VALUES (31,'./images/products/prd31/back.jpg', 'Mặt sau');
+
+--------------- END INSERT PC ---------------------------------
+
+/*Insert screen*/
+/*Insert Screen - Lenovo 5-4*/
+--Insert product 32 
+INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
+					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
+VALUES (5, 4, 'Màn hình Lenovo Think Vision S27i-30 63DFKAR4WW', 100, 3690000, 62, 38, 5, 0,
+'MÔ TẢ SẢN PHẨM</br></br>
+Cấu hình Màn hình Lenovo Think Vision S27i-30 63DFKAR4WW (27Inch/ Full HD/ 4ms/ 100HZ/ 300 cd/m2/ IPS)</br>
+MÀN HÌNH</br>
+</br>
+Kiểu màn hình	Màn hình văn phòng</br>
+Kích thước màn hình	27Inch</br>
+Độ phân giải	Full HD (1920x1080)</br>
+Thời gian đáp ứng	4ms</br>
+Tần số quét	100HZ</br>
+Độ sáng	300 cd/m2</br>
+Tỷ lệ tương phản	1300:1</br>
+Góc nhìn	178°(H)/178°(V)</br>
+Tấm nền	IPS</br>
+Loa tích hợp	Không</br>
+KẾT NỐI</br>
+Cổng giao tiếp	2*HDMI, 1*VGA, 1*audio out</br>
+Phụ kiện kèm theo	Cáp nguồn, Cáp HDMI</br>
+THÔNG TIN KHÁC</br>
+Tính năng khác	3 mặt đường viền siêu mảnh, màn hình chống lóa</br>
+Xuất xứ	Chính hãng</br>',
+'2021-09-12', 0.15, 1);
+
+-- Insert ImageProduct 32
+INSERT INTO ImageProduct(productId, imageUrl, description)
+VALUES (32,'./images/products/prd32/general.jpg', 'Thông tin tổng quát');
+
+INSERT INTO ImageProduct(productId, imageUrl, description)
+VALUES (32,'./images/products/prd32/front.jpg', 'Mặt trước');
+
+INSERT INTO ImageProduct(productId, imageUrl, description)
+VALUES (32,'./images/products/prd32/right.jpg', 'Bên phải');
+
+INSERT INTO ImageProduct(productId, imageUrl, description)
+VALUES (32,'./images/products/prd32/left.jpg', 'Bên trái');
+
+INSERT INTO ImageProduct(productId, imageUrl, description)
+VALUES (32,'./images/products/prd32/back.jpg', 'Mặt sau');
+
+/*Insert Screen - DELL 1-4*/
+--Insert product 33
+INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
+					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
+VALUES (1, 4, 'Màn Hình Dell UltraSharp U2424H', 100, 6490000, 62, 38, 5, 0,
+'MÔ TẢ SẢN PHẨM</br>
+</br>
+"THƯƠNG HIỆU: Dell</br>
+</br>
+BẢO HÀNH: 36 tháng</br>
+</br>
+KÍCH CỠ: 23.8 inch</br>
+</br>
+KIỂU MÀN HÌNH: Màn hình phẳng</br>
+</br>
+ĐỘ PHÂN GIẢI: FHD (1920 x 1080)</br>
+</br>
+TỶ LỆ KHUNG HÌNH: 16:9</br>
+</br>
+TẤM NỀN: IPS</br>
+</br>
+MÀU SẮC MÀN HÌNH: 16.7M, 100% BT.709, 100% sRGB, 85% DCI-P3</br>
+</br>
+ĐỘ SÁNG MÀN HÌNH: 250 cd/m²</br>
+</br>
+ĐỘ TƯƠNG PHẢN: 1000:1</br>
+</br>
+TẦN SỐ QUÉT: 120Hz</br>
+</br>
+THỜI GIAN PHẢN HỒI: 5 ms</br>
+</br>
+CỔNG KẾT NỐI MÀN HÌNH: 1 x HDMI, 2 x DisplayPort, 2 x USB-C</br>
+</br>
+VESA: 100 x 100 mm</br>
+</br>
+PHÂN LOẠI MÀN HÌNH: Đồ họa, Phổ thông"</br>',
+'2022-11-12', 0.12, 1);
+
+-- Insert ImageProduct 33
+INSERT INTO ImageProduct(productId, imageUrl, description)
+VALUES (33,'./images/products/prd33/general.jpg', 'Thông tin tổng quát');
+
+INSERT INTO ImageProduct(productId, imageUrl, description)
+VALUES (33,'./images/products/prd33/front.jpg', 'Mặt trước');
+
+INSERT INTO ImageProduct(productId, imageUrl, description)
+VALUES (33,'./images/products/prd33/right.jpg', 'Bên phải');
+
+INSERT INTO ImageProduct(productId, imageUrl, description)
+VALUES (33,'./images/products/prd33/left.jpg', 'Bên trái');
+
+INSERT INTO ImageProduct(productId, imageUrl, description)
+VALUES (33,'./images/products/prd33/back.jpg', 'Mặt sau');
