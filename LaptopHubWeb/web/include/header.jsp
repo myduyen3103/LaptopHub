@@ -1,6 +1,6 @@
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>JSP Page</title>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
     body{
@@ -121,33 +121,33 @@
     }
 
 
-</style>
-</head>
-<body>
-    <header>
-        <nav class="navbar">
-            <ul class="navbar-menu">
-                <li><a href ="#">TRANG CHỦ</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropbtn">PHÂN LOẠI</a>
-                    <div class="dropdown-content">
-                        <a href="#">Laptop</a>
-                        <a href="#">Máy tính bảng</a>
-                        <a href="">Màn hình</a>
-                        <a href="">PC</a>
-                    </div>
-                </li>
-                <li class="logo">
-                    <a href="#"><img src="../image/logo/logo.png" alt="alt"/></a>
-                </li>
-                <li><a href="#">VỀ CHÚNG TÔI</a></li>
-                <li class="personal">
-                <a href="#"><i class="fas fa-bell"></i></a>
-                <a href="#"><i class="fas fa-shopping-cart"></i></a>
-                <a href="#"><i class="fas fa-user"></i></a>
-                </li>
-                <span></span>
-            </ul>
-        </nav>
-    </header>
-</body>
+    </style>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar">
+                <ul class="navbar-menu">
+                    <li><a href ="#">TRANG CHỦ</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">PHÂN LOẠI</a>
+                        <div class="dropdown-content">
+                            <a href="#">Laptop</a>
+                            <a href="#">Máy tính bảng</a>
+                            <a href="">Màn hình</a>
+                            <a href="">PC</a>
+                        </div>
+                    </li>
+                    <li class="logo">
+                        <a href="#"><img src="../image/logo/logo.png" alt="alt"/></a>
+                    </li>
+                    <li><a href="#">VỀ CHÚNG TÔI</a></li>
+                    <li class="personal">
+                    <a href="#"><i class="fas fa-bell"></i></a>
+                    <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                    <a href="#"><i class="fas fa-user"></i></a>
+                    </li>
+                    <span></span>
+                </ul>
+            </nav>
+        </header>
+    </body>
