@@ -94,7 +94,7 @@
             transform-origin: center;
             padding:  0 auto;
         }
-        .row{
+        .rowLap{
             display: flex;
             justify-content: space-between;
             margin: 10px 70px;
@@ -103,8 +103,8 @@
     <div>
     <div class="footer-clean">
         <footer>
-            <div class="container">
-                <div class="row">
+            <div>
+                <div class="rowLap">
                     <div class=" item">
                         <h3>Tổng đài hỗ trợ</h3>
                         <ul>

@@ -16,15 +16,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
   font-family: "Poppins" , sans-serif;
 }
 .sidebar{
-  position: fixed;
+  position: absolute;
+  float: left; 
   left: 0;
   top: 0;
   height: 100%;
   width: 78px;
   background: #11101D;
   padding: 6px 14px;
-  z-index: 99;
+  z-index: -99;
   transition: all 0.5s ease;
+  
 }
 .sidebar.open{
   width: 250px;
@@ -76,6 +78,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
 .sidebar .nav-list{
   margin-top: 20px;
   height: 100%;
+  margin-left: 0; 
 }
 .sidebar li{
   position: relative;
