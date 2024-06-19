@@ -137,7 +137,7 @@
                         <p class="copyright">Laptop Hub © 2024</p>
 
                     </div>
-                    <img src="../image/logo/logo.png" alt="alt"/>
+                    <img src="./image/logo/logo.png" alt="alt"/>
                 </div>
             </div>
         </footer>

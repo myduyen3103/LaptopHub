@@ -101,7 +101,7 @@
         <servlet-class>laptophub.controller.web.authentication.LoginServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>SignUpServlet</servlet-name>
+        <servlet-name>SignupServlet</servlet-name>
         <servlet-class>laptophub.controller.web.authentication.SignupServlet</servlet-class>
     </servlet>
     <servlet>
@@ -245,8 +245,8 @@
         <url-pattern>/LoginServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>SignUpServlet</servlet-name>
-        <url-pattern>/SignUpServlet</url-pattern>
+        <servlet-name>SignupServlet</servlet-name>
+        <url-pattern>/SignupServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ForgotPassword</servlet-name>
