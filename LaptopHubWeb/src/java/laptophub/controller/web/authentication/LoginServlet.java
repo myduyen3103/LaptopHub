@@ -11,6 +11,10 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import laptophub.dal.UserDAO;
+import laptophub.model.User;
+import laptophub.utils.CookieUtils;
 
 /**
  *
@@ -53,7 +57,12 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+       String username = CookieUtils.get("cookuser", request);
+       if(username!=null && username.equals("")){
+           request.getRequestDispatcher("home.jsp").forward(request, response);
+           return;
+       }
+       request.getRequestDispatcher("login.jsp").forward(request, response);
     } 
 
     /** 
@@ -66,7 +75,33 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+       String userName = request.getParameter("username");
+       String password = request.getParameter("password");
+        UserDAO userDAO;
+        User user =null;
+        try {
+            userDAO= new UserDAO();
+            user = userDAO.checkLogin(new User(userName, password));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+      if(user!=null){
+          if(request.getParameter("remember")!=null){
+              String remember = request.getParameter("remember");
+              CookieUtils.add("cookuser", remember, 15, response);
+              CookieUtils.add("cookpass", remember, 15, response);
+              CookieUtils.add("cookremember", remember, 15, response);
+              
+          }
+          HttpSession session = request.getSession();
+          
+          session.setAttribute("sessuser", user.getUserName());
+          session.setAttribute("message", "Login success");
+          request.getRequestDispatcher("home.jsp").forward(request, response);
+      }else{
+          request.setAttribute("msg", "Authentication failure");
+          request.getRequestDispatcher("login.jsp").forward(request, response);
+      }  
     }
 
     /** 
@@ -77,5 +112,5 @@ public class LoginServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
+    
 }
