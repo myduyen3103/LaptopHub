@@ -4,18 +4,18 @@
     Author     : admin
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import= "laptophub.utils.CookieUtils" %>    
 
 <!DOCTYPE html>
 <html>
     <head>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8
-        <link href="css/bootstrap.min.css">
+      
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+       
         <title>Login form</title>
     </head>
-    <jsp:include page="/include/header.jsp"/>
+    <jsp:include page="/includes/header.jsp"/>
     <body>
             <%
               String username = CookieUtils.get("cookuser", request);
@@ -53,7 +53,7 @@
             
        
     </body>
-    <jsp:include page="/include/footer.jsp"/>
+    <jsp:include page="/includes/footer.jsp"/>
 </html>
 <style>
  .content-- img {

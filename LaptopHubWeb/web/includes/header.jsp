@@ -132,7 +132,7 @@ span{
             </div>
         </li>
         <li class="logo">
-            <a href=""><img src="http://localhost:8080/LaptopHubWeb/images/logo/logo.png" alt="logo"/></a>
+            <a href=""><img src="http://localhost:9999/LaptopHubWeb/images/logo/logo.png" alt="logo"/></a>
         </li>
         <li><a href="#">VỀ CHÚNG TÔI</a></li>
         <li class="personal">

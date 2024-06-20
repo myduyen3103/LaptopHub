@@ -25,7 +25,7 @@ public class UserDAO {
        DBConnection db = DBConnection.getInstance();
        String sql ="Select*from [dbo].[User]";
         try {
-           Connection con = db.opeanConnection();
+           Connection con = db.openConnection();
            PreparedStatement statement = con.prepareStatement(sql);
            ResultSet rs = statement.executeQuery();
            
