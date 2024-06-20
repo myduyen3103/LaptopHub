@@ -142,7 +142,7 @@
                     </div>
                 </li>
                 <li class="logo">
-                    <a href="#"><img src="./image/logo/logo.png" alt="alt"/></a>
+                    <a href="#"><img src="./images/logo/logo.png" alt="alt"/></a>
                 </li>
                 <li><a href="#">VỀ CHÚNG TÔI</a></li>
                 <li class="personal">

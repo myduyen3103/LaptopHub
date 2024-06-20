@@ -91,7 +91,7 @@
         </style>
     </head>
     <body>
-        <jsp:include page="/include/header.jsp" />
+        <jsp:include page="/includes/header.jsp" />
         <div class="signup-container">
             <h1 class="header-text">Đăng Kí</h1>
             <form class="signup-form" action="SignupServlet" method="post">
@@ -145,6 +145,6 @@
                 <% } %>
             </form>
         </div>
-        <jsp:include page="/include/footer.jsp" />
+        <jsp:include page="/includes/footer.jsp" />
     </body>
 </html>
