@@ -93,7 +93,7 @@ public class SignupServlet extends HttpServlet {
         boolean status = true; 
 
         if (!password.equals(confirmPassword)) {
-            request.setAttribute("error-password", "Passwords do not match");
+            request.setAttribute("error", "Passwords do not match");
             RequestDispatcher dispatcher = request.getRequestDispatcher("signup.jsp");
             dispatcher.forward(request, response);
             return;
@@ -101,7 +101,7 @@ public class SignupServlet extends HttpServlet {
 
         try {
             if (userDAO.checkUsernameExists(userName)) {
-                request.setAttribute("error-username", "Username already exists");
+                request.setAttribute("error", "Username already exists");
                 RequestDispatcher dispatcher = request.getRequestDispatcher("signup.jsp");
                 dispatcher.forward(request, response);
                 return;
