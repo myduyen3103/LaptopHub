@@ -22,14 +22,14 @@ CREATE TABLE [User] (
 CREATE TABLE Wallet (
     walletId INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
     userName NVARCHAR(50) NOT NULL FOREIGN KEY REFERENCES [User](userName),
-    balance FLOAT
+    balance INT
 );
 
 -- Create Transaction Table
 CREATE TABLE [Transaction] (
     transactionId INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
     walletId INT NOT NULL FOREIGN KEY REFERENCES Wallet(walletId),
-    amount FLOAT,
+    amount INT,
     createdDate DATE,
     transactionType NVARCHAR(50),
     status BIT
@@ -40,7 +40,7 @@ CREATE TABLE [Order] (
     orderId INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
     date DATE NOT NULL,
     userName NVARCHAR(50) NOT NULL FOREIGN KEY REFERENCES [User](userName),
-    totalMoney FLOAT NOT NULL,
+    totalMoney INT NOT NULL,
     status BIT NOT NULL,
     transactionId INT FOREIGN KEY REFERENCES [Transaction](transactionId)
 );
@@ -53,8 +53,8 @@ CREATE TABLE Shipment (
     shipmentName NVARCHAR(100),
     shipmentDate DATE,
     deliveryDate DATE,
-    carrier FLOAT,
-    totalShip FLOAT
+    carrier INT,
+    totalShip INT
 );
 -- Create Supplier Table
 CREATE TABLE Supplier (
@@ -80,7 +80,7 @@ CREATE TABLE Product (
     categoryId INT NOT NULL FOREIGN KEY REFERENCES Category(categoryId),
     productName NVARCHAR(100) NOT NULL,
     quantityPerUnit INT,
-    unitPrice FLOAT,
+    unitPrice INT,
     unitInStock INT,
     quantitySold INT,
     starRating SMALLINT,
@@ -96,7 +96,7 @@ CREATE TABLE OrderDetails (
     orderId INT NOT NULL,
     productId INT NOT NULL,
     quantity INT,
-    unitPrice FLOAT,
+    unitPrice INT,
     discount FLOAT,
     PRIMARY KEY (orderId, productId),
     FOREIGN KEY (orderId) REFERENCES [Order](orderId),
@@ -175,29 +175,29 @@ INSERT INTO Wallet (userName, balance) VALUES
 
 -- Insert Supplier
 INSERT INTO Supplier (companyName, homePage, country, imageLogo)
-VALUES ('DELL', 'https://www.dell.com/en-vn', 'Mỹ', './images/suppliers/logo-dell.jpg');
+VALUES (N'DELL', 'https://www.dell.com/en-vn', N'Mỹ', N'./images/suppliers/logo-dell.jpg');
 INSERT INTO Supplier (companyName, homePage, country, imageLogo)
-VALUES ('ASUS', 'https://www.asus.com/vn/', 'Đài Loan', './images/suppliers/logo-asus.png');
+VALUES (N'ASUS', 'https://www.asus.com/vn/', N'Đài Loan', N'./images/suppliers/logo-asus.png');
 INSERT INTO Supplier (companyName, homePage, country, imageLogo)
-VALUES ('APPLE', 'https://www.apple.com/vn/', 'Mỹ', './images/suppliers/logo-apple.jpg');
+VALUES (N'APPLE', 'https://www.apple.com/vn/', N'Mỹ', N'./images/suppliers/logo-apple.jpg');
 INSERT INTO Supplier (companyName, homePage, country, imageLogo)
-VALUES ('ACER', 'https://www.acer.com/vn-vi', 'Đài Loan', './images/suppliers/logo-acer.png');
+VALUES (N'ACER', 'https://www.acer.com/vn-vi', N'Đài Loan', N'./images/suppliers/logo-acer.png');
 INSERT INTO Supplier (companyName, homePage, country, imageLogo)
-VALUES ('LENOVO', 'https://www.lenovo.com/vn/vi/pc/?orgRef=https%253A%252F%252Fwww.google.com%252F', 'Trung Quốc', './images/suppliers/logo-lenovo.png');
+VALUES (N'LENOVO', 'https://www.lenovo.com/vn/vi/pc/?orgRef=https%253A%252F%252Fwww.google.com%252F', N'Trung Quốc', N'./images/suppliers/logo-lenovo.png');
 INSERT INTO Supplier (companyName, homePage, country, imageLogo)
-VALUES ('HP', 'https://www.hp.com/vn-vi/home.html', 'Mỹ', './images/suppliers/logo-hp.png');
+VALUES (N'HP', 'https://www.hp.com/vn-vi/home.html', N'Mỹ', N'./images/suppliers/logo-hp.png');
 INSERT INTO Supplier (companyName, homePage, country, imageLogo)
-VALUES ('SAMSUNG', 'https://www.samsung.com/vn/', 'Hàn Quốc', './images/suppliers/logo-samsung.png');
+VALUES (N'SAMSUNG', 'https://www.samsung.com/vn/', N'Hàn Quốc', N'./images/suppliers/logo-samsung.png');
 
 -- Insert cartegory
 INSERT INTO Category (categoryName, description, imageCat)
-VALUES ('Laptop', 'Máy tính xách tay', './images/categories/cate-laptop.jpg');
+VALUES (N'Laptop', N'Máy tính xách tay', N'./images/categories/cate-laptop.jpg');
 INSERT INTO Category (categoryName, description, imageCat)
-VALUES ('Tablet', 'Máy tính bảng', './images/categories/cate-tablet.jpg');
+VALUES (N'Tablet', N'Máy tính bảng', N'./images/categories/cate-tablet.jpg');
 INSERT INTO Category (categoryName, description, imageCat)
-VALUES ('PC', 'Máy tính để bàn - CPU', './images/categories/cate-pc.jpg');
+VALUES (N'PC', N'Máy tính để bàn - CPU', N'./images/categories/cate-pc.jpg');
 INSERT INTO Category (categoryName, description, imageCat)
-VALUES ('Screen', 'Màn hình rời', './images/categories/cate-screen.jpg');
+VALUES (N'Screen', N'Màn hình rời', N'./images/categories/cate-screen.jpg');
 
 --------------------------------------------------------------------------------------------------------------------------
 
@@ -206,8 +206,8 @@ VALUES ('Screen', 'Màn hình rời', './images/categories/cate-screen.jpg');
 -- Insert product 1
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (1, 1, 'Laptop Gaming Dell G15 5511', 300, 27490000, 240, 60, 5, 0,
-'MÔ TẢ SẢN PHẨM</br>
+VALUES (1, 1, N'Laptop Gaming Dell G15 5511', 300, 27490000, 240, 60, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br>
 Laptop Gaming Dell G15 5511 i5-11400H, 8GB, 256GB, RTX3050 4GB, 15.6" FHD 120Hz, OfficeHS21, Win11, Xám (P105F006)</br>
 </br>
 Thông Số Kỹ Thuật:</br>	
@@ -252,25 +252,25 @@ Phụ kiện đi kèm: dây nguồn</br>',
 
 -- Insert ImageProduct 1
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (1,'./images/products/prd1/general.jpg', 'Thông tin tổng quát');
+VALUES (1,N'./images/products/prd1/general.jpg', N'Thông tin tổng quát');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (1,'./images/products/prd1/front.jpg', 'Mặt trước');
+VALUES (1,N'./images/products/prd1/front.jpg', N'Mặt trước');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (1,'./images/products/prd1/right.jpg', 'Bên phải');
+VALUES (1,N'./images/products/prd1/right.jpg', N'Bên phải');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (1,'./images/products/prd1/left.jpg', 'Bên trái');
+VALUES (1,N'./images/products/prd1/left.jpg', N'Bên trái');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (1,'./images/products/prd1/back.jpg', 'Mặt sau');
+VALUES (1,N'./images/products/prd1/back.jpg', N'Mặt sau');
 
 -- Insert product 2
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (1, 1, 'Laptop Dell Inspiron 5620', 300, 22990000, 230, 70, 5, 0,
-'MÔ TẢ SẢN PHẨM</br>
+VALUES (1, 1, N'Laptop Dell Inspiron 5620', 300, 22990000, 230, 70, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br>
 Laptop Dell Inspiron 5620 i5-1235U, 8GD4, 256SSD, 16" FHD+, FP, LED_KB, OfficeHS21, Win 11, Bạc (P1WKN)</br>
 </br>
 Thông Số Kỹ Thuật:</br>	
@@ -314,25 +314,25 @@ Có túi tặng kèm</br>',
 
 -- Insert ImageProduct 2
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (2,'./images/products/prd2/general.png', 'Thông tin tổng quát');
+VALUES (2,N'./images/products/prd2/general.png', N'Thông tin tổng quát');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (2,'./images/products/prd2/front.jpg', 'Mặt trước');
+VALUES (2,N'./images/products/prd2/front.jpg', N'Mặt trước');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (2,'./images/products/prd2/right.jpg', 'Bên phải');
+VALUES (2,N'./images/products/prd2/right.jpg', N'Bên phải');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (2,'./images/products/prd2/left.jpg', 'Bên trái');
+VALUES (2,N'./images/products/prd2/left.jpg', N'Bên trái');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (2,'./images/products/prd2/back.jpg', 'Mặt sau');
+VALUES (2,N'./images/products/prd2/back.jpg', N'Mặt sau');
 
 -- Insert product 3
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (1, 1, 'Laptop Dell Vostro 5320', 300, 28990000, 230, 70, 5, 0,
-'MÔ TẢ SẢN PHẨM</br>
+VALUES (1, 1, N'Laptop Dell Vostro 5320', 300, 28990000, 230, 70, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br>
 Laptop Dell Vostro 5320 i7 - 1260P, 16GB, 512GB, 13.3" QHD, FP, Win11, OfficeHS2021, Xám (V3I7007W)</br>
 </br>
 Thông Số Kỹ Thuật:	</br>
@@ -375,26 +375,26 @@ Phụ kiện đi kèm: dây nguồn</br>',
 
 -- Insert ImageProduct 3
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (3,'./images/products/prd3/general.png', 'Thông tin tổng quát');
+VALUES (3,N'./images/products/prd3/general.png', N'Thông tin tổng quát');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (3,'./images/products/prd3/front.jpg', 'Mặt trước');
+VALUES (3,N'./images/products/prd3/front.jpg', N'Mặt trước');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (3,'./images/products/prd3/right.jpg', 'Bên phải');
+VALUES (3,N'./images/products/prd3/right.jpg', N'Bên phải');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (3,'./images/products/prd3/left.jpg', 'Bên trái');
+VALUES (3,N'./images/products/prd3/left.jpg', N'Bên trái');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (3,'./images/products/prd3/back.jpg', 'Mặt sau');
+VALUES (3,N'./images/products/prd3/back.jpg', N'Mặt sau');
 
 /*Insert Laptop ASUS 2-1*/
 -- Insert product 4
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (2, 1, 'Laptop ASUS VivoBook 15 OLED', 310, 23390000, 210, 100, 5, 0,
-'MÔ TẢ SẢN PHẨM</br></br>
+VALUES (2, 1, N'Laptop ASUS VivoBook 15 OLED', 310, 23390000, 210, 100, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br></br>
 THÔNG TIN SẢN PHẨM</br>
 </br>
 Thông số kỹ thuật</br>
@@ -431,25 +431,25 @@ Thông số kỹ thuật</br>
 
 -- Insert ImageProduct 4
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (4,'./images/products/prd4/general.jpg', 'Thông tin tổng quát');
+VALUES (4,N'./images/products/prd4/general.jpg', N'Thông tin tổng quát');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (4,'./images/products/prd4/front.jpg', 'Mặt trước');
+VALUES (4,N'./images/products/prd4/front.jpg', N'Mặt trước');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (4,'./images/products/prd4/right.jpg', 'Bên phải');
+VALUES (4,N'./images/products/prd4/right.jpg', N'Bên phải');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (4,'./images/products/prd4/left.jpg', 'Bên trái');
+VALUES (4,N'./images/products/prd4/left.jpg', N'Bên trái');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (4,'./images/products/prd4/back.jpg', 'Mặt sau');
+VALUES (4,N'./images/products/prd4/back.jpg', N'Mặt sau');
 
 -- Insert product 5
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (2, 1, 'Laptop ASUS VivoBook 14 OLED A1405VA-KM257W', 300, 20990000, 200, 100, 5, 0,
-'MÔ TẢ SẢN PHẨM </br>
+VALUES (2, 1, N'Laptop ASUS VivoBook 14 OLED A1405VA-KM257W', 300, 20990000, 200, 100, 5, 0,
+N'MÔ TẢ SẢN PHẨM </br>
 </br>
 THÔNG SỐ KỸ THUẬT</br>
 </br>
@@ -482,25 +482,25 @@ THÔNG SỐ KỸ THUẬT</br>
 
 -- Insert ImageProduct 5
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (5,'./images/products/prd5/general.jpg', 'Thông tin tổng quát');
+VALUES (5,N'./images/products/prd5/general.jpg', N'Thông tin tổng quát');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (5,'./images/products/prd5/front.jpg', 'Mặt trước');
+VALUES (5,N'./images/products/prd5/front.jpg', N'Mặt trước');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (5,'./images/products/prd5/right.jpg', 'Bên phải');
+VALUES (5,'./images/products/prd5/right.jpg', N'Bên phải');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (5,'./images/products/prd5/left.jpg', 'Bên trái');
+VALUES (5,N'./images/products/prd5/left.jpg', N'Bên trái');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (5,'./images/products/prd5/back.jpg', 'Mặt sau');
+VALUES (5,N'./images/products/prd5/back.jpg', N'Mặt sau');
 
 -- Insert product 6
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (2, 1, 'Laptop ASUS TUF Gaming A15', 300, 19990000, 230, 70, 5, 0,
-'MÔ TẢ SẢN PHẨM</br></br>
+VALUES (2, 1, N'Laptop ASUS TUF Gaming A15', 300, 19990000, 230, 70, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br></br>
 THÔNG SỐ KỸ THUẬT</br>
 </br>
 •	CPU	AMD Ryzen™ 5 7535HS 3.3GHz up to 4.55GHz 16MB</br>
@@ -534,26 +534,26 @@ THÔNG SỐ KỸ THUẬT</br>
 
 -- Insert ImageProduct 6
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (6,'./images/products/prd6/general.jpg', 'Thông tin tổng quát');
+VALUES (6,N'./images/products/prd6/general.jpg', N'Thông tin tổng quát');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (6,'./images/products/prd6/front.jpg', 'Mặt trước');
+VALUES (6,N'./images/products/prd6/front.jpg', N'Mặt trước');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (6,'./images/products/prd6/right.jpg', 'Bên phải');
+VALUES (6,N'./images/products/prd6/right.jpg', N'Bên phải');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (6,'./images/products/prd6/left.jpg', 'Bên trái');
+VALUES (6,N'./images/products/prd6/left.jpg', N'Bên trái');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (6,'./images/products/prd6/back.jpg', 'Mặt sau');
+VALUES (6,N'./images/products/prd6/back.jpg', N'Mặt sau');
 
 /*Insert laptop - apple 3-1*/
 -- Insert product 7
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (3, 1, 'Máy tính xách tay Apple MacBook Air M3 Chip', 200, 27990000, 120, 80, 5, 0,
-'MÔ TẢ SẢN PHẨM</br></br>
+VALUES (3, 1, N'Máy tính xách tay Apple MacBook Air M3 Chip', 200, 27990000, 120, 80, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br></br>
 "Cỗ máy M3. Gọn bâng. Cân mọi việc.</br>
 </br>
 MacBook Air dễ dàng xử lý cả công việc lẫn giải trí và chip M3 mang đến năng lực tuyệt vời cho chiếc máy tính xách tay siêu gọn nhẹ này. Với thời lượng pin lên đến 18 giờ,1 bạn có thể mang theo chiếc MacBook Air siêu gọn nhẹ này đi bất cứ nơi đâu và nhanh chóng hoàn thành mọi việc bạn muốn.</br>
@@ -596,25 +596,25 @@ Bàn phím Magic Keyboard có đèn nền với Touch ID - Tiếng Anh (Mỹ)"</
 
 -- Insert ImageProduct 7
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (7,'./images/products/prd7/general.jpg', 'Thông tin tổng quát');
+VALUES (7,N'./images/products/prd7/general.jpg', N'Thông tin tổng quát');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (7,'./images/products/prd7/front.jpg', 'Mặt trước');
+VALUES (7,N'./images/products/prd7/front.jpg', N'Mặt trước');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (7,'./images/products/prd7/right.jpg', 'Bên phải');
+VALUES (7,N'./images/products/prd7/right.jpg', N'Bên phải');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (7,'./images/products/prd7/left.jpg', 'Bên trái');
+VALUES (7,N'./images/products/prd7/left.jpg', N'Bên trái');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (7,'./images/products/prd7/back.jpg', 'Mặt sau');
+VALUES (7,N'./images/products/prd7/back.jpg', N'Mặt sau');
 
 -- Insert product 8
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (3, 1, 'Máy tính xách tay Apple Macbook Air (2022) M2 chip', 200, 24990000, 120, 80, 5, 0,
-'MÔ TẢ SẢN PHẨM</br>
+VALUES (3, 1, N'Máy tính xách tay Apple Macbook Air (2022) M2 chip', 200, 24990000, 120, 80, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br>
 Apple Macbook Air (2022) M2 chip  (năm SX 2022), 13.6 inches, 8GB, 256GB SSD</br>
 SPG (Space Gray), STL (Starlight), MDN (Midnight). </br>
 Bộ xử lý</br>
@@ -679,25 +679,25 @@ OS: macOS</br>',
 
 -- Insert ImageProduct 8
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (8,'./images/products/prd8/general.jpg', 'Thông tin tổng quát');
+VALUES (8,N'./images/products/prd8/general.jpg', N'Thông tin tổng quát');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (8,'./images/products/prd8/front.jpg', 'Mặt trước');
+VALUES (8,N'./images/products/prd8/front.jpg', N'Mặt trước');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (8,'./images/products/prd8/right.jpg', 'Bên phải');
+VALUES (8,N'./images/products/prd8/right.jpg', N'Bên phải');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (8,'./images/products/prd8/left.jpg', 'Bên trái');
+VALUES (8,N'./images/products/prd8/left.jpg', N'Bên trái');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (8,'./images/products/prd8/back.jpg', 'Mặt sau');
+VALUES (8,N'./images/products/prd8/back.jpg', N'Mặt sau');
 
 --Insert product 9
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (3, 1, 'Máy tính xách tay MacBook Pro- M3 Pro Chip', 200, 62990000, 120, 80, 5, 0,
-'MÔ TẢ SẢN PHẨM</br>
+VALUES (3, 1, N'Máy tính xách tay MacBook Pro- M3 Pro Chip', 200, 62990000, 120, 80, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br>
 Thông số kỹ thuật</br>
 - Chip Apple M3 Pro với CPU 12 lõi, GPU 18 lõi và Neural Engine 16 lõi</br>
 - Bộ nhớ thống nhất 18GB</br>
@@ -710,27 +710,27 @@ Thông số kỹ thuật</br>
 
 -- Insert ImageProduct 9
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (9,'./images/products/prd9/general.jpg', 'Thông tin tổng quát');
+VALUES (9,N'./images/products/prd9/general.jpg', N'Thông tin tổng quát');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (9,'./images/products/prd9/front.jpg', 'Mặt trước');
+VALUES (9,N'./images/products/prd9/front.jpg', N'Mặt trước');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (9,'./images/products/prd9/right.jpg', 'Bên phải');
+VALUES (9,N'./images/products/prd9/right.jpg', N'Bên phải');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (9,'./images/products/prd9/left.jpg', 'Bên trái');
+VALUES (9,N'./images/products/prd9/left.jpg', N'Bên trái');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (9,'./images/products/prd9/back.jpg', 'Mặt sau');
+VALUES (9,N'./images/products/prd9/back.jpg', N'Mặt sau');
 
 
 /*Insert laptop - Acer 4-1*/
 --Insert product 10
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (4, 1, 'Laptop Acer Gaming Aspire 5 A515-58GM-53PZ', 200, 16290000, 120, 80, 5, 0,
-'MÔ TẢ SẢN PHẨM</br></br>
+VALUES (4, 1, N'Laptop Acer Gaming Aspire 5 A515-58GM-53PZ', 200, 16290000, 120, 80, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br></br>
 THÔNG SỐ KỸ THUẬT</br></br>
 •	CPU	Intel® Core™ i5-13420H 3.4GHz up to 4.6GHz 12MB</br>
 •	RAM	8GB DDR4 3200MHz (2x SO-DIMM socket, up to 32GB SDRAM)</br>
@@ -762,28 +762,20 @@ THÔNG SỐ KỸ THUẬT</br></br>
 •	Sản phẩm full box đầy đủ phụ kiện từ nhà sản xuất</br>',
 '2023-10-05', 0.2, 1);
 
--- Insert ImageProduct 10
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (10,'./images/products/prd10/general.jpg', 'Thông tin tổng quát');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (10,'./images/products/prd10/front.jpg', 'Mặt trước');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (10,'./images/products/prd10/right.jpg', 'Bên phải');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (10,'./images/products/prd10/left.jpg', 'Bên trái');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (10,'./images/products/prd10/back.jpg', 'Mặt sau');
+INSERT INTO ImageProduct (productId, imageUrl, description)
+VALUES
+    (10, './images/products/prd10/general.jpg', N'Thông tin tổng quát'),
+    (10, './images/products/prd10/front.jpg', N'Mặt trước'),
+    (10, './images/products/prd10/right.jpg', N'Bên phải'),
+    (10, './images/products/prd10/left.jpg', N'Bên trái'),
+    (10, './images/products/prd10/back.jpg', N'Mặt sau');
 
 /*Insert laptop - Lenovo 5-1*/
 --Insert product 11
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (5, 1, 'Laptop Lenovo ThinkPad E14 Gen 4 21E300E3VN', 200, 27990000, 120, 80, 5, 0,
-'MÔ TẢ SẢN PHẨM</br></br>
+VALUES (5, 1, N'Laptop Lenovo ThinkPad E14 Gen 4 21E300E3VN', 200, 27990000, 120, 80, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br></br>
 THÔNG SỐ KỸ THUẬT</br>
 </br>
 •	CPU	Intel Core i7-1255U 1.7GHz up to 4.7GHz 12MB</br>
@@ -816,27 +808,19 @@ THÔNG SỐ KỸ THUẬT</br>
 '2022-07-05', 0.31, 1);
 
 -- Insert ImageProduct 11
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (11,'./images/products/prd11/general.jpg', 'Thông tin tổng quát');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (11,'./images/products/prd11/front.jpg', 'Mặt trước');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (11,'./images/products/prd11/right.jpg', 'Bên phải');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (11,'./images/products/prd11/left.jpg', 'Bên trái');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (11,'./images/products/prd11/back.jpg', 'Mặt sau');
-
+INSERT INTO ImageProduct (productId, imageUrl, description)
+VALUES
+    (11, './images/products/prd11/general.jpg', N'Thông tin tổng quát'),
+    (11, './images/products/prd11/front.jpg', N'Mặt trước'),
+    (11, './images/products/prd11/right.jpg', N'Bên phải'),
+    (11, './images/products/prd11/left.jpg', N'Bên trái'),
+    (11, './images/products/prd11/back.jpg', N'Mặt sau');
 /*Insert laptop - HP 6-1*/
 --Insert product 12
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (6, 1, 'Laptop Gaming HP Victus 16-r0129TX 8C5N4PA', 200, 33990000, 120, 80, 5, 0,
-'MÔ TẢ SẢN PHẨM</br></br>
+VALUES (6, 1, N'Laptop Gaming HP Victus 16-r0129TX 8C5N4PA', 200, 33990000, 120, 80, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br></br>
 THÔNG SỐ KỸ THUẬT</br></br>
 
 •	CPU	Intel Core i7-13700H 2.4GHz up to 5.0GHz 24MB</br>
@@ -869,27 +853,20 @@ THÔNG SỐ KỸ THUẬT</br></br>
 '2023-07-05', 0.1, 1);
 
 -- Insert ImageProduct 12
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (12,'./images/products/prd12/general.jpg', 'Thông tin tổng quát');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (12,'./images/products/prd12/front.jpg', 'Mặt trước');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (12,'./images/products/prd12/right.jpg', 'Bên phải');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (12,'./images/products/prd12/left.jpg', 'Bên trái');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (12,'./images/products/prd12/back.jpg', 'Mặt sau');
+INSERT INTO ImageProduct (productId, imageUrl, description)
+VALUES
+    (12, './images/products/prd12/general.jpg', N'Thông tin tổng quát'),
+    (12, './images/products/prd12/front.jpg', N'Mặt trước'),
+    (12, './images/products/prd12/right.jpg', N'Bên phải'),
+    (12, './images/products/prd12/left.jpg', N'Bên trái'),
+    (12, './images/products/prd12/back.jpg', N'Mặt sau');
 
 /*Insert laptop - Samsung 7-1*/
 --Insert product 13
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (7, 1, 'Siêu Phẩm Samsung Galaxy Book 4', 200, 28990000, 120, 80, 5, 0,
-'MÔ TẢ SẢN PHẨM</br></br>
+VALUES (7, 1, N'Siêu Phẩm Samsung Galaxy Book 4', 200, 28990000, 120, 80, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br></br>
 Điểm nhấn của Samsung Galaxy Book4 360 là màn hình Super AMOLED 15.6 inch với độ chuẩn màu 120% DCI-P3. Mang lại hình ảnh sống động với màu sắc phong phú và độ tương phản sâu. Màn hình cảm ứng mượt mà, tần số quét cao mang lại trải nghiệm tốt. Dù bạn xem video, chỉnh sửa ảnh hay thuyết trình thì màn hình luôn giúp bạn có được trải nghiệm tối đa.</br>
 
 *Cấu hình chi tiết:</br>
@@ -906,20 +883,14 @@ VALUES (7, 1, 'Siêu Phẩm Samsung Galaxy Book 4', 200, 28990000, 120, 80, 5, 0
 '2024-01-05', 0.28, 1);
 
 -- Insert ImageProduct 13
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (13,'./images/products/prd13/general.jpg', 'Thông tin tổng quát');
+INSERT INTO ImageProduct (productId, imageUrl, description)
+VALUES
+    (13, './images/products/prd13/general.jpg', N'Thông tin tổng quát'),
+    (13, './images/products/prd13/front.jpg', N'Mặt trước'),
+    (13, './images/products/prd13/right.jpg', N'Bên phải'),
+    (13, './images/products/prd13/left.jpg', N'Bên trái'),
+    (13, './images/products/prd13/back.jpg', N'Mặt sau');
 
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (13,'./images/products/prd13/front.jpg', 'Mặt trước');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (13,'./images/products/prd13/right.jpg', 'Bên phải');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (13,'./images/products/prd13/left.jpg', 'Bên trái');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (13,'./images/products/prd13/back.jpg', 'Mặt sau');
 
 ---------- End Insert Product - laptop ------------------------
 
@@ -929,8 +900,8 @@ VALUES (13,'./images/products/prd13/back.jpg', 'Mặt sau');
 --Insert product 14
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (3, 2, 'Apple iPad Air 5 10.9 inch Wi-Fi 256GB', 100, 18890000, 60, 40, 5, 0,
-'MÔ TẢ SẢN PHẨM</br>
+VALUES (3, 2, N'Apple iPad Air 5 10.9 inch Wi-Fi 256GB', 100, 18890000, 60, 40, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br>
 Nhiều màu sắc. Mạnh mẽ. Nhẹ tênh.</br>
 Siêu mạnh mẽ với M1.</br>
 </br>
@@ -967,26 +938,20 @@ Bộ sản phẩm bao gồm: </br>
 '2022-01-06', 0.1, 1);
 
 -- Insert ImageProduct 14
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (14,'./images/products/prd14/general.jpg', 'Thông tin tổng quát');
+INSERT INTO ImageProduct (productId, imageUrl, description)
+VALUES
+    (14, './images/products/prd14/general.jpg', N'Thông tin tổng quát'),
+    (14, './images/products/prd14/front.jpg', N'Mặt trước'),
+    (14, './images/products/prd14/right.jpg', N'Bên phải'),
+    (14, './images/products/prd14/left.jpg', N'Bên trái'),
+    (14, './images/products/prd14/back.jpg', N'Mặt sau');
 
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (14,'./images/products/prd14/front.jpg', 'Mặt trước');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (14,'./images/products/prd14/right.jpg', 'Bên phải');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (14,'./images/products/prd14/left.jpg', 'Bên trái');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (14,'./images/products/prd14/back.jpg', 'Mặt sau');
 
 --Insert product 15
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (3, 2, 'Apple iPad Gen 9th 10.2-inch Wi-Fi 256GB', 100, 13390000, 70, 30, 5, 0,
-'MÔ TẢ SẢN PHẨM</br></br>
+VALUES (3, 2, N'Apple iPad Gen 9th 10.2-inch Wi-Fi 256GB', 100, 13390000, 70, 30, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br></br>
 Mạnh mẽ. Dễ sử dụng. Đa năng. iPad mới có màn hình Retina 10.2 inch tuyệt đẹp, chip A13 Bionic mạnh mẽ, camera trước Ultra Wide có tính năng Trung Tâm Màn Hình, tương thích với Apple Pencil và Smart Keyboard (1). iPad giúp bạn dễ dàng làm được nhiều việc hơn nữa. Tất cả tính năng với mức giá ấn tượng.</br>
 </br>
 Tính năng nổi bật</br>
@@ -1015,26 +980,20 @@ Bộ sản phẩm bao gồm: </br>
 '2022-04-07', 0.19, 1);
 
 -- Insert ImageProduct 15
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (15,'./images/products/prd15/general.jpg', 'Thông tin tổng quát');
+INSERT INTO ImageProduct (productId, imageUrl, description)
+VALUES
+    (15, './images/products/prd15/general.jpg', N'Thông tin tổng quát'),
+    (15, './images/products/prd15/front.jpg', N'Mặt trước'),
+    (15, './images/products/prd15/right.jpg', N'Bên phải'),
+    (15, './images/products/prd15/left.jpg', N'Bên trái'),
+    (15, './images/products/prd15/back.jpg', N'Mặt sau');
 
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (15,'./images/products/prd15/front.jpg', 'Mặt trước');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (15,'./images/products/prd15/right.jpg', 'Bên phải');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (15,'./images/products/prd15/left.jpg', 'Bên trái');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (15,'./images/products/prd15/back.jpg', 'Mặt sau');
 
 --Insert product 16
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (3, 2, 'Máy tính bảng Apple iPad Gen 10 10.9 inch 2022 Wifi 64GB', 100, 11490000, 57, 43, 5, 0,
-'MÔ TẢ SẢN PHẨM</br></br>
+VALUES (3, 2, N'Máy tính bảng Apple iPad Gen 10 10.9 inch 2022 Wifi 64GB', 100, 11490000, 57, 43, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br></br>
 Thiết kế trẻ trung</br>
 </br>
 iPad 10 sẽ có một thiết kế khá quen thuộc khi được hoàn thiện với phần vật liệu chủ yếu là kim loại ở phần mặt lưng, các cạnh và hai mặt đều được vát phẳng để mang lại cái nhìn sang trọng. Đi kèm với đó là các góc được bo tròn giúp cho tổng thể máy tính bảng trở nên thanh thoát và hiện đại hơn thay vì vuông vức trông như một cuốn tập.</br>
@@ -1080,27 +1039,21 @@ Kích thước, khối lượng: Dài 248.6 mm - Ngang 179.5 mm - Dày 7 mm - N�
 '2022-06-11', 0.12, 1);
 
 -- Insert ImageProduct 16
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (16,'./images/products/prd16/general.jpg', 'Thông tin tổng quát');
+INSERT INTO ImageProduct (productId, imageUrl, description)
+VALUES
+    (16, './images/products/prd16/general.jpg', N'Thông tin tổng quát'),
+    (16, './images/products/prd16/front.jpg', N'Mặt trước'),
+    (16, './images/products/prd16/right.jpg', N'Bên phải'),
+    (16, './images/products/prd16/left.jpg', N'Bên trái'),
+    (16, './images/products/prd16/back.jpg', N'Mặt sau');
 
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (16,'./images/products/prd16/front.jpg', 'Mặt trước');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (16,'./images/products/prd16/right.jpg', 'Bên phải');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (16,'./images/products/prd16/left.jpg', 'Bên trái');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (16,'./images/products/prd16/back.jpg', 'Mặt sau');
 
 /*Insert Tablet - SAMSUNG 7-2*/
 --Insert product 17
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (7, 2, 'Máy tính bảng Samsung Galaxy Tab S9 Plus Wifi', 100, 25990000, 60, 40, 5, 0,
-'MÔ TẢ SẢN PHẨM</br></br>
+VALUES (7, 2, N'Máy tính bảng Samsung Galaxy Tab S9 Plus Wifi', 100, 25990000, 60, 40, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br></br>
 Thông số kỹ thuật</br>
 </br>
 Kích thước màn hình:12.4 inches</br>
@@ -1136,26 +1089,20 @@ Loại CPU: 1 nhân 3.36 GHz, 4 nhân 2.8 GHz & 3 nhân 2 GHz</br>',
 '2023-01-06', 0.35, 1);
 
 -- Insert ImageProduct 17
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (17,'./images/products/prd17/general.jpg', 'Thông tin tổng quát');
+INSERT INTO ImageProduct (productId, imageUrl, description)
+VALUES
+    (17, './images/products/prd17/general.jpg', N'Thông tin tổng quát'),
+    (17, './images/products/prd17/front.jpg', N'Mặt trước'),
+    (17, './images/products/prd17/right.jpg', N'Bên phải'),
+    (17, './images/products/prd17/left.jpg', N'Bên trái'),
+    (17, './images/products/prd17/back.jpg', N'Mặt sau');
 
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (17,'./images/products/prd17/front.jpg', 'Mặt trước');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (17,'./images/products/prd17/right.jpg', 'Bên phải');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (17,'./images/products/prd17/left.jpg', 'Bên trái');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (17,'./images/products/prd17/back.jpg', 'Mặt sau');
 
 --Insert product 18
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (7, 2, 'Máy tính bảng Samsung Galaxy Tab S9 5G 256GB', 100, 24990000, 72, 28, 5, 0,
-'MÔ TẢ SẢN PHẨM</br></br>
+VALUES (7, 2, N'Máy tính bảng Samsung Galaxy Tab S9 5G 256GB', 100, 24990000, 72, 28, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br></br>
 Thông số kỹ thuật</br>
 </br>
 Kích thước màn hình:12.4 inches</br>
@@ -1191,26 +1138,19 @@ Loại CPU: 1 nhân 3.36 GHz, 4 nhân 2.8 GHz & 3 nhân 2 GHz</br>',
 '2023-07-06', 0.13, 1);
 
 -- Insert ImageProduct 18
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (18,'./images/products/prd18/general.jpg', 'Thông tin tổng quát');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (18,'./images/products/prd18/front.jpg', 'Mặt trước');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (18,'./images/products/prd18/right.jpg', 'Bên phải');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (18,'./images/products/prd18/left.jpg', 'Bên trái');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (18,'./images/products/prd18/back.jpg', 'Mặt sau');
+INSERT INTO ImageProduct (productId, imageUrl, description)
+VALUES
+    (18, './images/products/prd18/general.jpg', N'Thông tin tổng quát'),
+    (18, './images/products/prd18/front.jpg', N'Mặt trước'),
+    (18, './images/products/prd18/right.jpg', N'Bên phải'),
+    (18, './images/products/prd18/left.jpg', N'Bên trái'),
+    (18, './images/products/prd18/back.jpg', N'Mặt sau');
 
 --Insert product 19
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (7, 2, 'Máy tính bảng Samsung Galaxy Tab S9 5G 8GB_128GB', 100, 22990000, 40, 60, 5, 0,
-'MÔ TẢ SẢN PHẨM</br></br>
+VALUES (7, 2, N'Máy tính bảng Samsung Galaxy Tab S9 5G 8GB_128GB', 100, 22990000, 40, 60, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br></br>
 Thông số kỹ thuật</br>
 </br>
 Kích thước màn hình:12.4 inches</br>
@@ -1246,27 +1186,20 @@ Loại CPU: 1 nhân 3.36 GHz, 4 nhân 2.8 GHz & 3 nhân 2 GHz</br>',
 '2024-02-06', 0.20, 1);
 
 -- Insert ImageProduct 19
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (19,'./images/products/prd19/general.jpg', 'Thông tin tổng quát');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (19,'./images/products/prd19/front.jpg', 'Mặt trước');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (19,'./images/products/prd19/right.jpg', 'Bên phải');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (19,'./images/products/prd19/left.jpg', 'Bên trái');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (19,'./images/products/prd19/back.jpg', 'Mặt sau');
+INSERT INTO ImageProduct (productId, imageUrl, description)
+VALUES
+    (19, './images/products/prd19/general.jpg', N'Thông tin tổng quát'),
+    (19, './images/products/prd19/front.jpg', N'Mặt trước'),
+    (19, './images/products/prd19/right.jpg', N'Bên phải'),
+    (19, './images/products/prd19/left.jpg', N'Bên trái'),
+    (19, './images/products/prd19/back.jpg', N'Mặt sau');
 
 /*Insert Tablet - lenovo 5-2*/
 --Insert product 20
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (5, 2, 'Máy tính bảng Lenovo Xiaoxin Pad Pro 12.7 ', 100, 8000000, 50, 50, 5, 0,
-'MÔ TẢ SẢN PHẨM</br></br>
+VALUES (5, 2, N'Máy tính bảng Lenovo Xiaoxin Pad Pro 12.7 ', 100, 8000000, 50, 50, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br></br>
 💙 Thông số kỹ thuật : </br>
 🔸 Chip : snap dragon 870</br>
 🔸 Ram : </br>
@@ -1295,26 +1228,19 @@ VALUES (5, 2, 'Máy tính bảng Lenovo Xiaoxin Pad Pro 12.7 ', 100, 8000000, 50
 '2022-03-06', 0.15, 1);
 
 -- Insert ImageProduct 20
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (20,'./images/products/prd20/general.jpg', 'Thông tin tổng quát');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (20,'./images/products/prd20/front.jpg', 'Mặt trước');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (20,'./images/products/prd20/right.jpg', 'Bên phải');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (20,'./images/products/prd20/left.jpg', 'Bên trái');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (20,'./images/products/prd20/back.jpg', 'Mặt sau');
+INSERT INTO ImageProduct (productId, imageUrl, description)
+VALUES
+    (20, './images/products/prd20/general.jpg', N'Thông tin tổng quát'),
+    (20, './images/products/prd20/front.jpg', N'Mặt trước'),
+    (20, './images/products/prd20/right.jpg', N'Bên phải'),
+    (20, './images/products/prd20/left.jpg', N'Bên trái'),
+    (20, './images/products/prd20/back.jpg', N'Mặt sau');
 
 --Insert product 21
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (5, 2, 'Máy tính bảng Lenovo Tab P11 Plus Xám ', 100, 8190000, 64, 36, 5, 0,
-'MÔ TẢ SẢN PHẨM</br></br>
+VALUES (5, 2, N'Máy tính bảng Lenovo Tab P11 Plus Xám ', 100, 8190000, 64, 36, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br></br>
 💙 Thông số kỹ thuật : </br>
 🔸 Chip : snap dragon 870</br>
 🔸 Ram : </br>
@@ -1343,26 +1269,19 @@ VALUES (5, 2, 'Máy tính bảng Lenovo Tab P11 Plus Xám ', 100, 8190000, 64, 3
 '2023-03-06', 0.32, 1);
 
 -- Insert ImageProduct 21
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (21,'./images/products/prd21/general.jpg', 'Thông tin tổng quát');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (21,'./images/products/prd21/front.jpg', 'Mặt trước');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (21,'./images/products/prd21/right.jpg', 'Bên phải');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (21,'./images/products/prd21/left.jpg', 'Bên trái');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (21,'./images/products/prd21/back.jpg', 'Mặt sau');
+INSERT INTO ImageProduct (productId, imageUrl, description)
+VALUES
+    (21, './images/products/prd21/general.jpg', N'Thông tin tổng quát'),
+    (21, './images/products/prd21/front.jpg', N'Mặt trước'),
+    (21, './images/products/prd21/right.jpg', N'Bên phải'),
+    (21, './images/products/prd21/left.jpg', N'Bên trái'),
+    (21, './images/products/prd21/back.jpg', N'Mặt sau');
 
 --Insert product 22
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (5, 2, 'Máy tính bảng Lenovo Tab M11', 100, 5690000, 64, 36, 5, 0,
-'MÔ TẢ SẢN PHẨM</br></br>
+VALUES (5, 2, N'Máy tính bảng Lenovo Tab M11', 100, 5690000, 64, 36, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br></br>
 💙 Thông số kỹ thuật : </br>
 🔸 Chip : snap dragon 870</br>
 🔸 Ram : </br>
@@ -1391,20 +1310,13 @@ VALUES (5, 2, 'Máy tính bảng Lenovo Tab M11', 100, 5690000, 64, 36, 5, 0,
 '2022-12-12', 0.11, 1);
 
 -- Insert ImageProduct 22
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (22,'./images/products/prd22/general.jpg', 'Thông tin tổng quát');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (22,'./images/products/prd22/front.jpg', 'Mặt trước');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (22,'./images/products/prd22/right.jpg', 'Bên phải');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (22,'./images/products/prd22/left.jpg', 'Bên trái');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (22,'./images/products/prd22/back.jpg', 'Mặt sau');
+INSERT INTO ImageProduct (productId, imageUrl, description)
+VALUES
+    (22, './images/products/prd22/general.jpg', N'Thông tin tổng quát'),
+    (22, './images/products/prd22/front.jpg', N'Mặt trước'),
+    (22, './images/products/prd22/right.jpg', N'Bên phải'),
+    (22, './images/products/prd22/left.jpg', N'Bên trái'),
+    (22, './images/products/prd22/back.jpg', N'Mặt sau');
 
 ------------ End Insert Tablet -----------------------------
 
@@ -1413,8 +1325,8 @@ VALUES (22,'./images/products/prd22/back.jpg', 'Mặt sau');
 --Insert Product 23 
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (3, 3, 'Apple iMac M1 2021 24 inch with Retina 4.5K display', 100, 34570000, 64, 36, 5, 0,
-'MÔ TẢ SẢN PHẨM</br></br>
+VALUES (3, 3, N'Apple iMac M1 2021 24 inch with Retina 4.5K display', 100, 34570000, 64, 36, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br></br>
 Bảo hành chính hãng 12 tháng</br>
 </br>
 Bộ sản phẩm gồm: màn hình + bàn phím</br>
@@ -1439,26 +1351,19 @@ Chip Apple M1 trên dòng iMac 24 inch 2021 cho trải nghiệm hiệu suất �
 '2023-12-12', 0.14, 1);
 
 -- Insert ImageProduct 23
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (23,'./images/products/prd23/general.jpg', 'Thông tin tổng quát');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (23,'./images/products/prd23/front.jpg', 'Mặt trước');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (23,'./images/products/prd23/right.jpg', 'Bên phải');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (23,'./images/products/prd23/left.jpg', 'Bên trái');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (23,'./images/products/prd23/back.jpg', 'Mặt sau');
+INSERT INTO ImageProduct (productId, imageUrl, description)
+VALUES
+    (23, './images/products/prd23/general.jpg', N'Thông tin tổng quát'),
+    (23, './images/products/prd23/front.jpg', N'Mặt trước'),
+    (23, './images/products/prd23/right.jpg', N'Bên phải'),
+    (23, './images/products/prd23/left.jpg', N'Bên trái'),
+    (23, './images/products/prd23/back.jpg', N'Mặt sau');
 
 --Insert Product 24
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (3, 3, 'Apple iMac M3 8-Core CPU/10-Core GPU/8GB RAM/256GB', 100, 43679000, 70, 30, 5, 0,
-'MÔ TẢ SẢN PHẨM</br></br>
+VALUES (3, 3, N'Apple iMac M3 8-Core CPU/10-Core GPU/8GB RAM/256GB', 100, 43679000, 70, 30, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br></br>
 ĐẶC ĐIỂM NỔI BẬT</br>
 </br>
 Chip M3 mạnh mẽ xử lý tốt mọi tác vụ đồ hoạ, làm việc hằng ngàyXử lý nhiều tác vụ cùng lúc vô cùng hiệu quả với 8GB Ram cùng 256GB bộ nhớ trongHình ảnh hiển thị sống động trên màn hình Retina sắc nétTích hợp Webcam 1080P cho phép họp, trò chuyện online tiện lợi</br></br>
@@ -1477,26 +1382,19 @@ Tốc độ tải trò chơi nhanh hơn, và người dùng sẽ được trải
 '2022-10-12', 0.14, 1);
 
 -- Insert ImageProduct 24
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (24,'./images/products/prd24/general.jpg', 'Thông tin tổng quát');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (24,'./images/products/prd24/front.jpg', 'Mặt trước');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (24,'./images/products/prd24/right.jpg', 'Bên phải');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (24,'./images/products/prd24/left.jpg', 'Bên trái');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (24,'./images/products/prd24/back.jpg', 'Mặt sau');
+INSERT INTO ImageProduct (productId, imageUrl, description)
+VALUES
+    (24, './images/products/prd24/general.jpg', N'Thông tin tổng quát'),
+    (24, './images/products/prd24/front.jpg', N'Mặt trước'),
+    (24, './images/products/prd24/right.jpg', N'Bên phải'),
+    (24, './images/products/prd24/left.jpg', N'Bên trái'),
+    (24, './images/products/prd24/back.jpg', N'Mặt sau');
 
 --Insert Product 25
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (3, 3, 'Apple iMac M3 8CPU/8GPU 8GB/256GB | 8CPU/10GPU 8GB/512GB', 100, 38479000, 60, 40, 5, 0,
-'MÔ TẢ SẢN PHẨM</br></br>
+VALUES (3, 3, N'Apple iMac M3 8CPU/8GPU 8GB/256GB | 8CPU/10GPU 8GB/512GB', 100, 38479000, 60, 40, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br></br>
 ĐẶC ĐIỂM NỔI BẬT</br>
 </br>
 Chip M3 mạnh mẽ xử lý tốt mọi tác vụ đồ hoạ, làm việc hằng ngàyXử lý nhiều tác vụ cùng lúc vô cùng hiệu quả với 8GB Ram cùng 256GB bộ nhớ trongHình ảnh hiển thị sống động trên màn hình Retina sắc nétTích hợp Webcam 1080P cho phép họp, trò chuyện online tiện lợi</br></br>
@@ -1515,27 +1413,20 @@ Tốc độ tải trò chơi nhanh hơn, và người dùng sẽ được trải
 '2023-10-12', 0.03, 1);
 
 -- Insert ImageProduct 25
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (25,'./images/products/prd25/general.jpg', 'Thông tin tổng quát');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (25,'./images/products/prd25/front.jpg', 'Mặt trước');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (25,'./images/products/prd25/right.jpg', 'Bên phải');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (25,'./images/products/prd25/left.jpg', 'Bên trái');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (25,'./images/products/prd25/back.jpg', 'Mặt sau');
+INSERT INTO ImageProduct (productId, imageUrl, description)
+VALUES
+    (25, './images/products/prd25/general.jpg', N'Thông tin tổng quát'),
+    (25, './images/products/prd25/front.jpg', N'Mặt trước'),
+    (25, './images/products/prd25/right.jpg', N'Bên phải'),
+    (25, './images/products/prd25/left.jpg', N'Bên trái'),
+    (25, './images/products/prd25/back.jpg', N'Mặt sau');
 
 /*Insert PC - HP 6-3*/
 --Insert Product 26 
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (6, 3, 'Máy tính để bàn HP S01-PF2034D 6L605PA', 100, 10189800, 64, 36, 5, 0,
-'MÔ TẢ SẢN PHẨM</br></br>
+VALUES (6, 3, N'Máy tính để bàn HP S01-PF2034D 6L605PA', 100, 10189800, 64, 36, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br></br>
 Máy tính để bàn HP S01-PF2034D 6L605PA (i3-12100(4*3.3)/ Ram 8GD4/ 256GSSD/ DVDWR/ Windowns 11 home)</br>
 </br>
 HP S01-PF2034D 6L605PA với thiết kế hướng tương lai, bộ vi xử lý mạnh mẽ cùng tích hợp nhiều công nghệ bảo mật hàng đầu của HP sẽ là máy tính để bàn đa năng cực kỳ linh hoạt dành cho doanh nghiệp của bạn. </br>
@@ -1560,26 +1451,19 @@ Khối lượng:3.2 kg</br>',
 '2022-06-12', 0.09, 1);
 
 -- Insert ImageProduct 26
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (26,'./images/products/prd26/general.jpg', 'Thông tin tổng quát');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (26,'./images/products/prd26/front.jpg', 'Mặt trước');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (26,'./images/products/prd26/right.jpg', 'Bên phải');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (26,'./images/products/prd26/left.jpg', 'Bên trái');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (26,'./images/products/prd26/back.jpg', 'Mặt sau');
+INSERT INTO ImageProduct (productId, imageUrl, description)
+VALUES
+    (26, './images/products/prd26/general.jpg', N'Thông tin tổng quát'),
+    (26, './images/products/prd26/front.jpg', N'Mặt trước'),
+    (26, './images/products/prd26/right.jpg', N'Bên phải'),
+    (26, './images/products/prd26/left.jpg', N'Bên trái'),
+    (26, './images/products/prd26/back.jpg', N'Mặt sau');
 
 --Insert Product 27
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (6, 3, 'Máy tính để bàn HP Pavilion TP01-3008D 6K7A9PA Snow white', 100, 17190000, 64, 36, 5, 0,
-'MÔ TẢ SẢN PHẨM</br></br>
+VALUES (6, 3, N'Máy tính để bàn HP Pavilion TP01-3008D 6K7A9PA Snow white', 100, 17190000, 64, 36, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br></br>
 Máy tính để bàn HP S01-PF2034D 6L605PA (i3-12100(4*3.3)/ Ram 8GD4/ 256GSSD/ DVDWR/ Windowns 11 home)</br>
 </br>
 HP S01-PF2034D 6L605PA với thiết kế hướng tương lai, bộ vi xử lý mạnh mẽ cùng tích hợp nhiều công nghệ bảo mật hàng đầu của HP sẽ là máy tính để bàn đa năng cực kỳ linh hoạt dành cho doanh nghiệp của bạn. </br>
@@ -1604,26 +1488,19 @@ Khối lượng:3.2 kg</br>',
 '2023-06-12', 0.29, 1);
 
 -- Insert ImageProduct 27
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (27,'./images/products/prd27/general.jpg', 'Thông tin tổng quát');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (27,'./images/products/prd27/front.jpg', 'Mặt trước');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (27,'./images/products/prd27/right.jpg', 'Bên phải');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (27,'./images/products/prd27/left.jpg', 'Bên trái');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (27,'./images/products/prd27/back.jpg', 'Mặt sau');
+INSERT INTO ImageProduct (productId, imageUrl, description)
+VALUES
+    (27, './images/products/prd27/general.jpg', N'Thông tin tổng quát'),
+    (27, './images/products/prd27/front.jpg', N'Mặt trước'),
+    (27, './images/products/prd27/right.jpg', N'Bên phải'),
+    (27, './images/products/prd27/left.jpg', N'Bên trái'),
+    (27, './images/products/prd27/back.jpg', N'Mặt sau');
 
 --Insert Product 28
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (6, 3, 'PC HP M01-F3006d (8C5S2PA) 8C5S2PA', 100, 15890000, 71, 29, 5, 0,
-'MÔ TẢ SẢN PHẨM</br></br>
+VALUES (6, 3, N'PC HP M01-F3006d (8C5S2PA) 8C5S2PA', 100, 15890000, 71, 29, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br></br>
 Máy tính để bàn HP S01-PF2034D 6L605PA (i3-12100(4*3.3)/ Ram 8GD4/ 256GSSD/ DVDWR/ Windowns 11 home)</br>
 </br>
 HP S01-PF2034D 6L605PA với thiết kế hướng tương lai, bộ vi xử lý mạnh mẽ cùng tích hợp nhiều công nghệ bảo mật hàng đầu của HP sẽ là máy tính để bàn đa năng cực kỳ linh hoạt dành cho doanh nghiệp của bạn. </br>
@@ -1648,26 +1525,19 @@ Khối lượng:3.2 kg</br>',
 '2021-06-12', 0.09, 1);
 
 -- Insert ImageProduct 28
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (28,'./images/products/prd28/general.jpg', 'Thông tin tổng quát');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (28,'./images/products/prd28/front.jpg', 'Mặt trước');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (28,'./images/products/prd28/right.jpg', 'Bên phải');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (28,'./images/products/prd28/left.jpg', 'Bên trái');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (28,'./images/products/prd28/back.jpg', 'Mặt sau');
+INSERT INTO ImageProduct (productId, imageUrl, description)
+VALUES
+    (28, './images/products/prd28/general.jpg', N'Thông tin tổng quát'),
+    (28, './images/products/prd28/front.jpg', N'Mặt trước'),
+    (28, './images/products/prd28/right.jpg', N'Bên phải'),
+    (28, './images/products/prd28/left.jpg', N'Bên trái'),
+    (28, './images/products/prd28/back.jpg', N'Mặt sau');
 /*Insert PC - LENOVO 5-3*/
 --Insert Product 29
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (5, 3, 'PC Lenovo ThinkCentre Neo 50S Gen4 12JH0006VA', 100, 14990000, 64, 36, 5, 0,
-'MÔ TẢ SẢN PHẨM</br></br>
+VALUES (5, 3, N'PC Lenovo ThinkCentre Neo 50S Gen4 12JH0006VA', 100, 14990000, 64, 36, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br></br>
 BỘ XỬ LÝ</br></br>
 Dòng CPU	Core i5</br>
 Công nghệ CPU	</br>
@@ -1722,26 +1592,19 @@ Trọng lượng	Khoảng 4,5 kg (9,9 lbs)</br>',
 '2023-09-12', 0.19, 1);
 
 -- Insert ImageProduct 29
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (29,'./images/products/prd29/general.jpg', 'Thông tin tổng quát');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (29,'./images/products/prd29/front.jpg', 'Mặt trước');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (29,'./images/products/prd29/right.jpg', 'Bên phải');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (29,'./images/products/prd29/left.jpg', 'Bên trái');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (29,'./images/products/prd29/back.jpg', 'Mặt sau');
+INSERT INTO ImageProduct (productId, imageUrl, description)
+VALUES
+    (29, './images/products/prd29/general.jpg', N'Thông tin tổng quát'),
+    (29, './images/products/prd29/front.jpg', N'Mặt trước'),
+    (29, './images/products/prd29/right.jpg', N'Bên phải'),
+    (29, './images/products/prd29/left.jpg', N'Bên trái'),
+    (29, './images/products/prd29/back.jpg', N'Mặt sau');
 
 --Insert prduct 30
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (5, 3, 'Mini PC Lenovo ThinkCentre M70q gen 3 tiny i5-12500T', 100, 9990000, 64, 36, 5, 0,
-'MÔ TẢ SẢN PHẨM</br></br>
+VALUES (5, 3, N'Mini PC Lenovo ThinkCentre M70q gen 3 tiny i5-12500T', 100, 9990000, 64, 36, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br></br>
 BỘ XỬ LÝ</br></br>
 Dòng CPU	Core i5</br>
 Công nghệ CPU	</br>
@@ -1796,27 +1659,20 @@ Trọng lượng	Khoảng 4,5 kg (9,9 lbs)</br>',
 '2023-11-12', 0.19, 1);
 
 -- Insert ImageProduct 30
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (29,'./images/products/prd30/general.jpg', 'Thông tin tổng quát');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (30,'./images/products/prd30/front.jpg', 'Mặt trước');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (30,'./images/products/prd30/right.jpg', 'Bên phải');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (30,'./images/products/prd30/left.jpg', 'Bên trái');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (30,'./images/products/prd30/back.jpg', 'Mặt sau');
+INSERT INTO ImageProduct (productId, imageUrl, description)
+VALUES
+    (30, './images/products/prd30/general.jpg', N'Thông tin tổng quát'),
+    (30, './images/products/prd30/front.jpg', N'Mặt trước'),
+    (30, './images/products/prd30/right.jpg', N'Bên phải'),
+    (30, './images/products/prd30/left.jpg', N'Bên trái'),
+    (30, './images/products/prd30/back.jpg', N'Mặt sau');
 
 /*Insert PC - DELL 1-3*/
 --Insert Product 31
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (1, 3, 'Case máy tính Dell Optiplex 3050 SFF core i5 6500', 100, 4614000, 64, 36, 5, 0,
-'MÔ TẢ SẢN PHẨM</br></br>
+VALUES (1, 3, N'Case máy tính Dell Optiplex 3050 SFF core i5 6500', 100, 4614000, 64, 36, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br></br>
 BỘ XỬ LÝ</br></br>
 Dòng CPU	Core i5</br>
 Công nghệ CPU	</br>
@@ -1871,20 +1727,13 @@ Trọng lượng	Khoảng 4,5 kg (9,9 lbs)</br>',
 '2022-09-12', 0.25, 1);
 
 -- Insert ImageProduct 31
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (31,'./images/products/prd31/general.jpg', 'Thông tin tổng quát');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (31,'./images/products/prd31/front.jpg', 'Mặt trước');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (31,'./images/products/prd31/right.jpg', 'Bên phải');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (31,'./images/products/prd31/left.jpg', 'Bên trái');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (31,'./images/products/prd31/back.jpg', 'Mặt sau');
+INSERT INTO ImageProduct (productId, imageUrl, description)
+VALUES
+    (31, './images/products/prd31/general.jpg', N'Thông tin tổng quát'),
+    (31, './images/products/prd31/front.jpg', N'Mặt trước'),
+    (31, './images/products/prd31/right.jpg', N'Bên phải'),
+    (31, './images/products/prd31/left.jpg', N'Bên trái'),
+    (31, './images/products/prd31/back.jpg', N'Mặt sau');
 
 --------------- END INSERT PC ---------------------------------
 
@@ -1893,8 +1742,8 @@ VALUES (31,'./images/products/prd31/back.jpg', 'Mặt sau');
 --Insert product 32 
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (5, 4, 'Màn hình Lenovo Think Vision S27i-30 63DFKAR4WW', 100, 3690000, 62, 38, 5, 0,
-'MÔ TẢ SẢN PHẨM</br></br>
+VALUES (5, 4, N'Màn hình Lenovo Think Vision S27i-30 63DFKAR4WW', 100, 3690000, 62, 38, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br></br>
 Cấu hình Màn hình Lenovo Think Vision S27i-30 63DFKAR4WW (27Inch/ Full HD/ 4ms/ 100HZ/ 300 cd/m2/ IPS)</br>
 MÀN HÌNH</br>
 </br>
@@ -1917,27 +1766,20 @@ Xuất xứ	Chính hãng</br>',
 '2021-09-12', 0.15, 1);
 
 -- Insert ImageProduct 32
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (32,'./images/products/prd32/general.jpg', 'Thông tin tổng quát');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (32,'./images/products/prd32/front.jpg', 'Mặt trước');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (32,'./images/products/prd32/right.jpg', 'Bên phải');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (32,'./images/products/prd32/left.jpg', 'Bên trái');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (32,'./images/products/prd32/back.jpg', 'Mặt sau');
+INSERT INTO ImageProduct (productId, imageUrl, description)
+VALUES
+    (32, './images/products/prd32/general.jpg', N'Thông tin tổng quát'),
+    (32, './images/products/prd32/front.jpg', N'Mặt trước'),
+    (32, './images/products/prd32/right.jpg', N'Bên phải'),
+    (32, './images/products/prd32/left.jpg', N'Bên trái'),
+    (32, './images/products/prd32/back.jpg', N'Mặt sau');
 
 /*Insert Screen - DELL 1-4*/
 --Insert product 33
 INSERT INTO Product(supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, 
 					quantitySold, starRating, isDiscount, description, releaseDate, discount, status)
-VALUES (1, 4, 'Màn Hình Dell UltraSharp U2424H', 100, 6490000, 62, 38, 5, 0,
-'MÔ TẢ SẢN PHẨM</br>
+VALUES (1, 4, N'Màn Hình Dell UltraSharp U2424H', 100, 6490000, 62, 38, 5, 0,
+N'MÔ TẢ SẢN PHẨM</br>
 </br>
 "THƯƠNG HIỆU: Dell</br>
 </br>
@@ -1971,17 +1813,10 @@ PHÂN LOẠI MÀN HÌNH: Đồ họa, Phổ thông"</br>',
 '2022-11-12', 0.12, 1);
 
 -- Insert ImageProduct 33
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (33,'./images/products/prd33/general.jpg', 'Thông tin tổng quát');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (33,'./images/products/prd33/front.jpg', 'Mặt trước');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (33,'./images/products/prd33/right.jpg', 'Bên phải');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (33,'./images/products/prd33/left.jpg', 'Bên trái');
-
-INSERT INTO ImageProduct(productId, imageUrl, description)
-VALUES (33,'./images/products/prd33/back.jpg', 'Mặt sau');
+INSERT INTO ImageProduct (productId, imageUrl, description)
+VALUES
+    (33, './images/products/prd33/general.jpg', N'Thông tin tổng quát'),
+    (33, './images/products/prd33/front.jpg', N'Mặt trước'),
+    (33, './images/products/prd33/right.jpg', N'Bên phải'),
+    (33, './images/products/prd33/left.jpg', N'Bên trái'),
+    (33, './images/products/prd33/back.jpg', N'Mặt sau');
