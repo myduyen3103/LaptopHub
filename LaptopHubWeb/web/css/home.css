@@ -1,0 +1,166 @@
+.search-bar{
+    height: 270px;
+    width: 1280px;
+    background-image: url(../images/logo/searchBar.png);
+    background-size: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 96px;
+    margin-left: 96px;
+    border-radius: 10px;
+}
+
+.search-bar .title{
+    height: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: end;
+}
+
+.search-bar .title h1{
+    color: white;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold; 
+    text-shadow: 2px 2px black;
+}
+
+.search-content{
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: end;
+}
+ 
+.search-bar .search-box{
+    height: 40px;
+    border-radius: 20px;
+    background-color: white;
+    padding-left: 20px;
+}
+
+.search-bar .search-box input{
+    width: 480px;
+    height: 40px;  
+    font-family: "Times New Roman", Times, serif;
+    border: none;
+    margin-right: 20px;
+}
+
+/*CSS category*/
+.category{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 5px;
+    margin-left: 5px;
+    height: 300px;
+}
+
+.category .title{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.category .title h2{
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
+}
+
+.category .detail{
+    align-content: center;
+}
+
+.category .detail{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-left: 60px;
+    margin-right: 60px;
+    height: 200px;
+    border-style: solid;
+    border-radius: 10px;
+}
+
+.category .detail .each-cate{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.category .detail .each-cate{
+    display: grid;
+    grid-template-rows: 1.5fr 0.5fr;
+    height: 200px;
+}
+
+.category .detail .category-img{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
+
+.category .detail .category-img a{
+    align-content: center;
+}
+
+.category .detail .name h2{
+    font-family: "Times New Roman", Times, serif;
+}
+
+/*Sản phẩm mới nhất*/
+
+.top10-product .title{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.top10-product .title h2{
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
+}
+
+.detail-top-10{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr ;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.each-product{
+    margin: 20px;
+}
+
+.detail-top-10 .image{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 225px;
+}
+
+.detail-top-10 .image img{
+    height: 150px;
+    width: 150px;
+}
+
+.detail-top-10 .name h4{
+    font-family: "Times New Roman", Times, serif;
+}
+
+.detail-top-10 .info h4{
+    font-family: "Times New Roman", Times, serif;
+}
+
+.detail-top-10 .info p{
+    font-family: "Times New Roman", Times, serif;
+}
+
+.detail-top-10 .sale{
+    text-decoration: line-through;
+}
+
