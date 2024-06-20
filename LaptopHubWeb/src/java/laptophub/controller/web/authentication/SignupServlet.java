@@ -115,7 +115,7 @@ public class SignupServlet extends HttpServlet {
             newUser.setFullName(fullName);
             newUser.setPassword(password);
             newUser.setRoleId(roleId);
-            newUser.setImage(null);
+            newUser.setImage("./image/avatar/default.jpg");
             newUser.setBirthday(birthday);
             newUser.setAddress(address);
             newUser.setPhone(phone);
