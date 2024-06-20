@@ -1985,3 +1985,7 @@ VALUES (33,'./images/products/prd33/left.jpg', 'Bên trái');
 
 INSERT INTO ImageProduct(productId, imageUrl, description)
 VALUES (33,'./images/products/prd33/back.jpg', 'Mặt sau');
+
+
+ALTER TABLE Product
+ALTER COLUMN unitPrice INT;
