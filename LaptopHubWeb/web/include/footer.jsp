@@ -101,15 +101,20 @@
             transform-origin: center;
             padding:  0 auto;
         }
+        .rowLap{
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 70px;
+        }
     </style>
 </head>
 
 <body>
     <div class="footer-clean">
         <footer>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-sm-4 col-md-3 item">
+            <div>
+                <div class="rowLap">
+                    <div class=" item">
                         <h3>Tổng đài hỗ trợ</h3>
                         <ul>
                             <li><a href="#">Mua hàng: 09786468364</a></li>
