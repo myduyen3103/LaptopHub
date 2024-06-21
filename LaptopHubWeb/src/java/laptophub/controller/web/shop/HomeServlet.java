@@ -11,6 +11,11 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import laptophub.dal.CategoryDAO;
+import laptophub.dal.ProductDAO;
+import laptophub.model.Category;
+import laptophub.model.Product;
 
 /**
  *
@@ -53,7 +58,18 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        
+        ProductDAO prdDAO = new ProductDAO();
+        CategoryDAO cateDAO = new CategoryDAO();
+        
+        ArrayList<Product> prdList = prdDAO.getTop10NewProduct();
+        ArrayList<Category> cateList = cateDAO.getCategory();
+        
+        request.setAttribute("top10ProductList", prdList);
+        request.setAttribute("categoryList", cateList);
+        
+        request.getRequestDispatcher("home.jsp").forward(request, response);
     } 
 
     /** 
