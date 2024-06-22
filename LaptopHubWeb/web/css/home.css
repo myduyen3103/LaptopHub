@@ -1,13 +1,11 @@
+*{
+    padding: 0;
+}
 .search-bar{
-    height: 270px;
-    width: 1280px;
+    height: 500px;
+    width: 1513px;
     background-image: url(../images/logo/searchBar.png);
     background-size: 100%;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-right: 96px;
-    margin-left: 96px;
-    border-radius: 10px;
 }
 
 .search-bar .title{
@@ -16,12 +14,13 @@
     flex-direction: row;
     justify-content: center;
     align-items: end;
+    z-index: 1;
 }
 
 .search-bar .title h1{
     color: white;
     font-family: "Times New Roman", Times, serif;
-    font-weight: bold; 
+    font-weight: bold;
     text-shadow: 2px 2px black;
 }
 
@@ -32,17 +31,10 @@
     justify-content: center;
     align-items: end;
 }
- 
-.search-bar .search-box{
-    height: 40px;
-    border-radius: 20px;
-    background-color: white;
-    padding-left: 20px;
-}
 
 .search-bar .search-box input{
     width: 480px;
-    height: 40px;  
+    height: 40px;
     font-family: "Times New Roman", Times, serif;
     border: none;
     margin-right: 20px;
@@ -76,22 +68,31 @@
 .category .detail{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    margin-left: 60px;
-    margin-right: 60px;
+    margin-left: 100px;
+    margin-right: 100px;
     height: 200px;
     border-style: solid;
     border-radius: 10px;
+    border-color: transparent;
 }
 
 .category .detail .each-cate{
+    width: 330px;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+
 }
+.each-cate:hover{
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.3);
+}
+
 .category .detail .each-cate{
     display: grid;
     grid-template-rows: 1.5fr 0.5fr;
     height: 200px;
+
 }
 
 .category .detail .category-img{
@@ -132,8 +133,19 @@
 }
 
 .each-product{
-    margin: 20px;
+    margin: 20px 10px;
+    border: solid transparent;
+    opacity: 1;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, opacity 0.3s, transform 0.3s;
 }
+.each-product:hover{
+    background-color: rgb(219, 214, 214);
+    
+    /* Hiệu ứng nổi lên */
+    transform: translateY(-5px);
+}
+
 
 .detail-top-10 .image{
     display: flex;
@@ -150,6 +162,7 @@
 
 .detail-top-10 .name h4{
     font-family: "Times New Roman", Times, serif;
+
 }
 
 .detail-top-10 .info h4{
@@ -158,9 +171,98 @@
 
 .detail-top-10 .info p{
     font-family: "Times New Roman", Times, serif;
-}
 
+}
+.info{
+    padding: 15px ;
+}
+.name{
+    height: 90px;
+}
 .detail-top-10 .sale{
     text-decoration: line-through;
 }
+.checked {
+    color: orange;
+}
+.link{
+    text-decoration: none;
+}
+.link{
+    background-color: white;
+    color: black;
+    border: 2px solid #460E6D;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px 40px;
+    border-radius: 20px;
 
+}
+
+.link:hover, .link:active {
+    background-color: #460E6D;
+    color: white;
+
+}
+.product{
+    margin-left: 30px;
+    line-height: 35px;
+}
+.search {
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+
+.searchTerm {
+    width: 700px;
+    border: 3px solid transparent;
+    border-right: none;
+    padding: 5px;
+    height: 50px;
+    border-radius: 20px 0 0 20px;
+    outline: none;
+    color: #8c8e8d;
+}
+
+.searchTerm:focus{
+    color: #460E6D;
+}
+
+.searchButton {
+    width: 105px;
+    height: 65px;
+    border: 1px solid #460E6D;
+    background: #460E6D;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 20px 20px 0;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+    width: 30%;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.price{
+    background-color: #460E6D;
+    color: rgb(255, 255, 255);
+    border: solid #460E6D;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 20px;
+    margin-left: 0;
+}
+.imgProduct{
+    width: 225px;
+    height: 225px;
+}
