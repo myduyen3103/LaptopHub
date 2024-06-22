@@ -6,11 +6,11 @@
     margin: 0;
     font-family: "Times New Roman", Times, serif;
 }
-.navbar{
+.navbar01{
     background: linear-gradient(to right, #000, #460E6D);
     color: white;
 }
-.navbar-menu{
+.navbar-menu01{
     position: relative;
     list-style-type: none;
     display: flex;
@@ -27,16 +27,16 @@ img{
 .personal a{
     margin-left: 30px;
 }
-.navbar-menu li:not(.logo){
+.navbar-menu01 li:not(.logo){
     z-index: 1;
     position: relative;
     margin: 25px 45px;
 }
-.navbar-menu li a{
+.navbar-menu01 li a{
     color: white;
     text-decoration: none;
 }
-.navbar-menu li{
+.navbar-menu01 li{
     z-index: 1;
 }
 
@@ -105,22 +105,22 @@ span{
     border-radius: 8px;
     transition: .5s;
 }
-.navbar-menu li:nth-child(1):hover~span{
+.navbar-menu01 li:nth-child(1):hover~span{
     left: 0;
 }
-.navbar-menu li:nth-child(2):hover~span{
+.navbar-menu01 li:nth-child(2):hover~span{
     left: 385px;
     width: 210px;
     ;
 }
 
-.navbar-menu li:nth-child(4):hover~span{
+.navbar-menu01 li:nth-child(4):hover~span{
     left: 970px;
     width: 200px;
 }
 </style>
-<div class="navbar">
-    <ul class="navbar-menu">
+<div class="navbar01">
+    <ul class="navbar-menu01">
         <li><a href ="#">TRANG CHỦ</a></li>
         <li class="dropdown">
             <a href="#" class="dropbtn">PHÂN LOẠI</a>
@@ -132,7 +132,7 @@ span{
             </div>
         </li>
         <li class="logo">
-            <a href=""><img src="http://localhost:8080/LaptopHubWeb/images/logo/logo.png" alt="logo"/></a>
+            <a href=""><img src="http://localhost:9999/LaptopHubWeb/images/logo/logo.png" alt="logo"/></a>
         </li>
         <li><a href="#">VỀ CHÚNG TÔI</a></li>
         <li class="personal">
