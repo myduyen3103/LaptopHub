@@ -12,7 +12,7 @@
     <!-- Font Awesome Icon Library -->
     <meta charset=UTF-8>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- <link rel="stylesheet" href="./css/home.css"> -->
+     <link rel="stylesheet" href="./css/home.css"> 
     <style>
         
 
@@ -21,9 +21,6 @@
 <body>
     <div>
         <div class="search-bar">
-            
-            
-
             <div class="wrap">
                 <div class="search">
                    <input type="text" class="searchTerm" placeholder="Tìm kiếm sản phẩm..">
@@ -38,9 +35,7 @@
                 <h2>PHÂN LOẠI</h2>
             </div>
             <div class="detail">
-                <c:forEach var="category" items="${categoryList}">
-
-                    
+                <c:forEach var="category" items="${categoryList}">                    
                     <div class="each-cate">
                         <div class="category-img">
                             <a class="cat" href="#"><img src="${category.getImageCat()}" alt="${category.getDescription()}"></a>
@@ -122,7 +117,6 @@
                         </div>
 
                         <a class="link" href="#"><p>Chi tiết sản phẩm >></p></a>
-                        
                     </div>
                 </c:forEach>
             </div>

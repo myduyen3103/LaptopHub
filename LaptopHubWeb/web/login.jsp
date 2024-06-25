@@ -14,10 +14,60 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
         <title>Login form</title>
-    </head>
-    <jsp:include page="/includes/header.jsp"/>
+        <style>
+            .h3{
+                font-weight: bold;
+            }
+            .login {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
 
+            .login-header {
+                margin-bottom: 1rem;
+            }
+            .footer-clean{
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+            }
+            .login{
+                padding-top: 57px;
+            }
+            .dangky{
+                color: #660066
+            }
+            .btn-primary {
+                background-color: #660066/* Màu nền */
+
+
+            }
+
+            .btn-primary:hover {
+                background-color: #460e6d /* Màu nền khi di chuyển chuột vào */
+
+            }
+            .inline-block {
+                display: inline-block;
+            }
+            .forgotpass{
+                margin-left: 200px;
+                text-decoration: none;
+                color: #660066;
+                margin-left: 240px
+            }
+            .btn-long {
+                width: 100%;
+                max-width: 300px; /* Đặt một giới hạn độ rộng nếu cần */
+                margin: 10px auto; /* Căn giữa nút và thêm lề trên dưới */
+            }
+        </style>
+    </head>
     <body>
+        <jsp:include page="/includes/header.jsp"/>
         <%
           String username = CookieUtils.get("cookuser", request);
           String password = CookieUtils.get("cookpass", request);
@@ -60,7 +110,7 @@
                                                                                    margin-left: 3px;
                                                                                    margin-right: 0px;
                                                                                    margin-top: 10px;
-                                                                                    margin-bottom: 20px"
+                                                                                   margin-bottom: 20px"
                                                                                    >Login</button>
                             <br>
                             <div class="inline-block">Bạn chưa có tài khoản ?</div> 
@@ -73,60 +123,9 @@
         </div>
 
 
-
+        <jsp:include page="/includes/footer.jsp"/>
     </body>
-    <jsp:include page="/includes/footer.jsp"/>
 </html>
 
-<style>
-    .h3{
-        font-weight: bold;
-    }
-    .login {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
 
-    .login-header {
-        margin-bottom: 1rem;
-    }
-    .footer-clean{
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-    }
-    .login{
-        padding-top: 57px;
-    }
-    .dangky{
-        color: #660066
-    }
-    .btn-primary {
-        background-color: #660066/* Màu nền */
-   
-
-    }
-
-    .btn-primary:hover {
-        background-color: #460e6d /* Màu nền khi di chuyển chuột vào */
-        
-    }
-    .inline-block {
-        display: inline-block;
-    }
-    .forgotpass{
-        margin-left: 200px;
-        text-decoration: none;
-        color: #660066;
-        margin-left: 240px
-    }
-    .btn-long {
-        width: 100%;
-        max-width: 300px; /* Đặt một giới hạn độ rộng nếu cần */
-        margin: 10px auto; /* Căn giữa nút và thêm lề trên dưới */
-    }
-</style>
 

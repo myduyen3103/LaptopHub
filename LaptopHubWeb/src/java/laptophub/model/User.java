@@ -27,7 +27,6 @@ public class User {
 
     public User() {
     }
-
     public User(String userName, int userId, String fullName, String password, int roleId, String image, Date birthday, String address, String phone, boolean status) {
         this.userName = userName;
         this.userId = userId;
@@ -109,12 +108,6 @@ public class User {
     public void setImage(String image) {
         this.image = image;
     }
-
-    public String getBirthday() {
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-mm-dd");
-        return df.format(birthday);
-    }
-
     public void setBirthday(String birthday) {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-mm-dd");
         try {
@@ -123,7 +116,13 @@ public class User {
             System.out.println(e.getMessage());
         }
     }
+    public Date getBirthday() {
+        return birthday;
+    }
 
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
     public String getAddress() {
         return address;
     }

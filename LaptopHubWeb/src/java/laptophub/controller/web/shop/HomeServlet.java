@@ -58,6 +58,7 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+        PrintWriter out = response.getWriter();
         response.setContentType("text/html;charset=UTF-8");
         
         ProductDAO prdDAO = new ProductDAO();
@@ -68,7 +69,7 @@ public class HomeServlet extends HttpServlet {
         
         request.setAttribute("top10ProductList", prdList);
         request.setAttribute("categoryList", cateList);
-        
+//        out.print("In ra " + prdList);
         request.getRequestDispatcher("home.jsp").forward(request, response);
     } 
 
