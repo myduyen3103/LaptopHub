@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import laptophub.utils.MoneyUtils;
 
 /**
  *
@@ -74,7 +75,17 @@ public class Product implements Serializable{
         setStatus(status);
         this.imageList = imageList;
     }
-
+    
+    public String getPricePerUnit(){
+        MoneyUtils money = new MoneyUtils();
+        return money.formatMoney(unitPrice);
+    }
+    public String getPricePerUnitAfterDiscount(){
+        
+        MoneyUtils money = new MoneyUtils();
+        return money.formatMoney(unitPrice - this.getDiscountPrice());
+    }
+    
     public int getProductId() {
         return productId;
     }
@@ -166,7 +177,10 @@ public class Product implements Serializable{
     public String getIsDiscount() {
         return isDiscount?"Có":"Không";
     }
-
+    public boolean getIsDiscountBoolean() {
+        return isDiscount;
+    }
+    
     public void setIsDiscount(String isDiscount) {
         this.isDiscount = isDiscount.equalsIgnoreCase("Có");
     }
@@ -178,6 +192,9 @@ public class Product implements Serializable{
     public String getIsStatus() {
         return status?"Đang Kinh Doanh":"Ngừng Kinh Doanh";
     }
+    public boolean getStatus() {
+        return status;
+    }
 
     public void setStatus(String status) {
         this.status = status.equalsIgnoreCase("Đang Kinh Doanh");
@@ -186,6 +203,9 @@ public class Product implements Serializable{
     public String getReleaseDate() {
         SimpleDateFormat sd = new SimpleDateFormat("dd/MM/yyyy");
         return sd.format(releaseDate);
+    }
+    public Date getReleaseDateForm() {
+        return releaseDate;
     }
 
     public void setReleaseDate(String releaseDate) {
@@ -207,7 +227,9 @@ public class Product implements Serializable{
 
     @Override
     public String toString() {
-        return "Product{" + "productId=" + productId + ", supplierId=" + supplierId + ", categoryId=" + categoryId + ", productName=" + productName + ", quantityPerUnit=" + quantityPerUnit + ", unitPrice=" + unitPrice + ", unitInStock=" + unitInStock + ", quantitySold=" + quantitySold + ", starRating=" + starRating + ", isDiscount=" + isDiscount + ", description=" + description + ", releaseDate=" + releaseDate + ", discount=" + discount + ", status=" + status + '}';
+        return "Product{" + "productId=" + productId + ", supplierId=" + supplierId + ", categoryId=" + categoryId + ", productName=" + productName + ", quantityPerUnit=" + quantityPerUnit + ", unitPrice=" + unitPrice+ ", unitInStock=" + unitInStock + ", quantitySold=" + quantitySold + ", starRating=" + starRating + ", isDiscount=" + isDiscount + ", description=" + description + ", releaseDate=" + releaseDate + ", discount=" + discount + ", status=" + status + ", imageList=" + imageList + '}';
     }
+
+    
     
 }

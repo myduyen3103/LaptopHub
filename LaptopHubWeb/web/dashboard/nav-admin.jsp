@@ -43,8 +43,7 @@
             <div class="logo-header" data-background-color="dark">
                 <a href="index.html" class="logo">
                     <img
-                        src="../images/logo/logo.png"
-                        alt="navbar brand"
+                        src="http://localhost:8080/LaptopHubWeb/images/logo/logo.png"
                         class="navbar-brand"
                         height="20"
                         />

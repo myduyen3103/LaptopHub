@@ -8,6 +8,7 @@
 <%@taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <%@include file="/includes/header.jsp" %>
+<%@page import= "laptophub.utils.MoneyUtils" %>  
 <head>
     <!-- Font Awesome Icon Library -->
     <meta charset=UTF-8>
@@ -66,8 +67,8 @@
                             
                             <h4 class="name">${product.getProductName()}</h4>
                             <div class="info">
-                                <p>Siêu ưu đãi:</p> <p class="sale"> ${product.getUnitPrice()}VND</p>
-                                <h4 class="price">${product.getUnitPrice()-product.getDiscountPrice()}VND</h4>   
+                                <p>Siêu ưu đãi:</p> <p class="sale"> ${product.getPricePerUnit()}VND</p>
+                                <h4 class="price">${product.getPricePerUnitAfterDiscount()}VND</h4>   
                             </div>
                             
                             <div class="starRate">

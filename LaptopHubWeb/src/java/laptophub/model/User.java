@@ -24,9 +24,10 @@ public class User {
     private String address;
     private String phone;
     private boolean status;
-
+    
     public User() {
     }
+    
     public User(String userName, int userId, String fullName, String password, int roleId, String image, Date birthday, String address, String phone, boolean status) {
         this.userName = userName;
         this.userId = userId;
@@ -49,7 +50,7 @@ public class User {
         this.password = password;
         this.roleId = roleId;
         this.image = image;
-           setBirthday(birthday);
+        setBirthday(birthday);
         this.address = address;
         this.phone = phone;
         this.status = status;
@@ -59,6 +60,8 @@ public class User {
         this.userName = userName;
         this.password = password;
     }
+    
+    
        
 
     public String getUserName() {

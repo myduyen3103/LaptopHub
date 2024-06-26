@@ -44,7 +44,7 @@
           <div class="logo-header" data-background-color="dark">
               <a href="index.html" class="logo" style="list-style: none; color: white">
                 <img style="width: 90px; height: auto; "
-                src="../images/logo/logo.png"
+                src="images/logo/logo.png"
                 alt="navbar brand"
                 class="navbar-brand"
                 height="20"
@@ -68,7 +68,7 @@
               <li class="nav-item active">
                 <a
                   data-bs-toggle="collapse"
-                  href="#dashboard"
+                  href="main.jsp"
                   class="collapsed"
                   aria-expanded="false"
                 >
@@ -83,13 +83,13 @@
                 <h4 class="text-section">Quản lí</h4>
               </li>
               <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#submenu">
+                <a data-bs-toggle="collapse" href="../DashboardServlet">
                   <i class="fas fa-desktop"></i>
                   <p>Tổng quan</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#base">
+                <a data-bs-toggle="collapse" href="../">
                   <i class="fas fa-layer-group"></i>
                   <p>Sản phẩm</p>
                 </a>

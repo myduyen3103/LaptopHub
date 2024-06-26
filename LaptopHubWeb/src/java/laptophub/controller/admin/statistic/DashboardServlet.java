@@ -12,6 +12,13 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
+import laptophub.dal.OrderDAO;
+import laptophub.dal.ProductDAO;
+import laptophub.dal.SupplierDAO;
+import laptophub.dal.UserDAO;
+import laptophub.model.Supplier;
+import laptophub.model.User;
 
 /**
  *
@@ -56,7 +63,35 @@ public class DashboardServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        PrintWriter out = response.getWriter();
+        UserDAO user = new UserDAO();
+        ProductDAO product = new ProductDAO();
+        OrderDAO order = new OrderDAO();
+        SupplierDAO supplierDAO = new SupplierDAO();
+        int numOfCustomer = user.getNumOfCustomer();
+        int numOfProduct = product.getNumOfProduct();
+        int totalRevenue = order.getTotalRevenue();
+        int totalSold = product.getTotalSold();
+        List<Supplier> supplier = supplierDAO.getAllSupplier();
+        List<User> topUser = user.getTop5Customer();
+        int monthlyRevenue4 = order.getMonthlyRevenue("4");
+        int monthlyRevenue5 = order.getMonthlyRevenue("5");
+        int monthlyRevenue6 = order.getMonthlyRevenue("6");
+        int todayRevenue = order.getTodayRevenue();
+
+        request.setAttribute("numOfCustomer", numOfCustomer);
+        request.setAttribute("numOfProduct", numOfProduct);
+        request.setAttribute("totalRvenue", totalRevenue);
+        request.setAttribute("totalSold", totalSold);
+        request.setAttribute("supplierList", supplier);
+        request.setAttribute("topUser", topUser);
+        request.setAttribute("monthlyRevenue4", monthlyRevenue4);
+        request.setAttribute("monthlyRevenue5", monthlyRevenue5);
+        request.setAttribute("monthlyRevenue6", monthlyRevenue6);
+        request.setAttribute("todayRevenue", todayRevenue);
+        
+//        out.print(topUser);
+        request.getRequestDispatcher("dashboard/main.jsp").include(request, response);
     } 
 
     /** 

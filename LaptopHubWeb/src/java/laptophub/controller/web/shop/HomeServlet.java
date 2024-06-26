@@ -16,6 +16,7 @@ import laptophub.dal.CategoryDAO;
 import laptophub.dal.ProductDAO;
 import laptophub.model.Category;
 import laptophub.model.Product;
+import laptophub.utils.MoneyUtils;
 
 /**
  *
@@ -66,7 +67,7 @@ public class HomeServlet extends HttpServlet {
         
         ArrayList<Product> prdList = prdDAO.getTop10NewProduct();
         ArrayList<Category> cateList = cateDAO.getCategory();
-        
+
         request.setAttribute("top10ProductList", prdList);
         request.setAttribute("categoryList", cateList);
 //        out.print("In ra " + prdList);

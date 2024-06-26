@@ -73,10 +73,6 @@
         <servlet-class>laptophub.controller.admin.statistic.DashboardServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Top10SellerProduct</servlet-name>
-        <servlet-class>laptophub.controller.admin.statistic.Top10SellerProduct</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>CartServlet</servlet-name>
         <servlet-class>laptophub.controller.web.cart.CartServlet</servlet-class>
     </servlet>
@@ -143,6 +139,14 @@
     <servlet>
         <servlet-name>HomeCat4</servlet-name>
         <servlet-class>laptophub.controller.web.shop.HomeCat4</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProductManagement</servlet-name>
+        <servlet-class>laptophub.controller.admin.management.product.ProductManagement</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Top10SellerProduct</servlet-name>
+        <servlet-class>laptophub.controller.admin.statistic.Top10SellerProduct</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AddAccountServlet</servlet-name>
@@ -217,10 +221,6 @@
         <url-pattern>/DashboardServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Top10SellerProduct</servlet-name>
-        <url-pattern>/Top10SellerProduct</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>CartServlet</servlet-name>
         <url-pattern>/CartServlet</url-pattern>
     </servlet-mapping>
@@ -288,4 +288,18 @@
         <servlet-name>HomeCat4</servlet-name>
         <url-pattern>/HomeCat4</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductManagement</servlet-name>
+        <url-pattern>/ProductManagement</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Top10SellerProduct</servlet-name>
+        <url-pattern>/Top10SellerProduct</url-pattern>
+    </servlet-mapping>
+    <multipart-config>
+        <location>/tmp</location>
+        <max-file-size>20848820</max-file-size>
+        <max-request-size>418018841</max-request-size>
+        <file-size-threshold>1048576</file-size-threshold>
+    </multipart-config>
 </web-app>

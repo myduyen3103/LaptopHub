@@ -13,14 +13,15 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import laptophub.model.User;
+import laptophub.model.Wallet;
 import laptophub.utils.DBConnection;
-
 
 /**
  *
  * @author admin
  */
 public class UserDAO {
+
     private final DBConnection dbConnection;
 
     public UserDAO() {
@@ -143,4 +144,92 @@ public class UserDAO {
         }
     }
 
+    //for admin statistic
+    
+    
+    public int getNumOfCustomer() {
+        DBConnection db = DBConnection.getInstance();
+        String sql = "SELECT COUNT(*) FROM [dbo].[User] WHERE roleId = 1";
+        int numOfCus = 0;
+        try {
+            Connection con = db.openConnection();
+            PreparedStatement statement = con.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                numOfCus = Integer.parseInt(rs.getString(1));
+
+            }
+            rs.close();
+            statement.close();
+            con.close();
+        } catch (Exception ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return numOfCus;
+    }
+    public List<User> getTop5Customer(){
+        List<User> top5Cus = new ArrayList<>();
+        DBConnection db = DBConnection.getInstance();
+        String sql = """
+                     SELECT TOP 5 [dbo].[User].userName, [dbo].[User].fullName, [dbo].[Wallet].balance
+                                          FROM [dbo].[User]
+                                          INNER JOIN [dbo].[Wallet] ON [dbo].[User].userName = [dbo].[Wallet].userName
+                                          ORDER BY [dbo].[Wallet].balance DESC""";
+        
+        try {
+            Connection con = db.openConnection();
+            PreparedStatement statement = con.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                String userName = rs.getString(1);
+                String fullName = rs.getNString(2);
+                int balance = rs.getInt(3);
+                User user = getUser(userName);
+                top5Cus.add(user);
+            }
+            rs.close();
+            statement.close();
+            con.close();
+        } catch (Exception ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return top5Cus;
+        
+    }
+    public User getUser(String userNameIn){
+        DBConnection db = DBConnection.getInstance();
+        String sql = "SELECT * FROM [dbo].[User] WHERE userName = ?";
+        User user = null;
+        try{
+            Connection con = db.openConnection();
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(1, userNameIn);
+            ResultSet rs = statement.executeQuery();
+            if(rs.next()){
+                String userName = rs.getString(1);
+                int userId = rs.getInt(2);
+                String fullName = rs.getNString(3);
+                String password = rs.getString(4);
+                int roleID = rs.getInt(5);
+                String image = rs.getString(6);
+                String birthday = rs.getString(7);
+                String address = rs.getString(8);
+                String phone = rs.getString(9);
+                Boolean status = rs.getBoolean(10);
+                user = new User(userName, userId, fullName, password, roleID, image, birthday, address, phone, true);                
+            }
+            rs.close();
+            statement.close();
+            con.close();
+        }catch(Exception ex){
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE,null, ex);
+        }
+        return user;
+    }
+    public static void main(String[] args) {
+        UserDAO userDao = new UserDAO();
+        System.out.println(userDao.getTop5Customer());
+    }
+    
+    
 }
