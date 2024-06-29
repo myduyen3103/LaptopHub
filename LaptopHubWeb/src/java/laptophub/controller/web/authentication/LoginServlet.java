@@ -97,7 +97,7 @@ public class LoginServlet extends HttpServlet {
           
           session.setAttribute("sessuser", user.getUserName());
           session.setAttribute("message", "Login success");
-          request.getRequestDispatcher("home.jsp").forward(request, response);
+           response.sendRedirect(request.getContextPath() + "/HomeServlet");
       }else{
           request.setAttribute("msg", "Authentication failure");
           request.getRequestDispatcher("login.jsp").forward(request, response);

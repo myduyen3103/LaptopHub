@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
      <link rel="stylesheet" href="./css/home.css"> 
     <style>
-        
+
 
     </style>
 </head>
@@ -36,16 +36,15 @@
                 <h2>PHÂN LOẠI</h2>
             </div>
             <div class="detail">
-                <c:forEach var="category" items="${categoryList}">                    
+                <c:forEach var="category" items="${categoryList}">
                     <div class="each-cate">
                         <div class="category-img">
                             <a class="cat" href="#"><img src="${category.getImageCat()}" alt="${category.getDescription()}"></a>
                         </div>
                         <div class="name">
-                            <a class="link" href="#"><h2>${category.getCategoryName()}</h2></a>
+                            <a class="link" href="HomeServlet?action=${category.getCategoryName()}"><h2>${category.getCategoryName()}</h2></a>
                         </div>
                     </div>
-         
                 </c:forEach>
             </div>
         </div>
