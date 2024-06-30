@@ -11,6 +11,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import laptophub.utils.CookieUtils;
 
 /**
  *
@@ -53,7 +55,12 @@ public class LogoutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+          CookieUtils.add("cookuser", null, 0, response);
+        CookieUtils.add("cookpass", null, 0, response);
+        CookieUtils.add("cookrem", null, 0, response);
+        HttpSession session = request.getSession();
+        session.invalidate();
+        request.getRequestDispatcher("/includes/login.jsp").forward(request, response);
     } 
 
     /** 
