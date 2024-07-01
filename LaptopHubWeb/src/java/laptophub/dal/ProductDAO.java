@@ -67,6 +67,7 @@ public class ProductDAO {
     }
 
     public ArrayList<Product> getTop10NewProduct() {
+
         ArrayList<Product> prdList = new ArrayList<>();
         String sql = "SELECT TOP (10) [productId],[supplierId],[categoryId],[productName],[quantityPerUnit],[unitPrice],[unitInStock], "
                 + "[quantitySold],[starRating],[isDiscount],[description],[releaseDate],[discount],[status] "
@@ -79,6 +80,8 @@ public class ProductDAO {
             rs = ps.executeQuery();
 
             while (rs.next()) {
+
+
                 int productId = rs.getInt("productId");
                 int supplierId = rs.getInt("supplierId");
                 int categoryId = rs.getInt("categoryId");
@@ -160,11 +163,13 @@ public class ProductDAO {
             ps.setInt(1, prdId);
             rs = ps.executeQuery();
 
+
             while (rs.next()) {
                 int imageId = rs.getInt("imageId");
                 int productId = rs.getInt("productId");
                 String imageUrl = rs.getNString("imageUrl");
                 String description = rs.getNString("description");
+
 
                 ImageProduct img = new ImageProduct(imageId, productId, imageUrl, description);
                 imgList.add(img);
@@ -174,6 +179,7 @@ public class ProductDAO {
         }
         return imgList;
     }
+
 
     public int getNumOfProduct() {
         DBConnection db = DBConnection.getInstance();
@@ -195,6 +201,7 @@ public class ProductDAO {
         }
         return numOfProduct;
     }
+
 
     public int getTotalSold() {
         DBConnection db = DBConnection.getInstance();
@@ -244,7 +251,6 @@ public class ProductDAO {
     public void insertImageProduct(ImageProduct imageProduct) {
         String sql = "INSERT INTO ImageProduct(productId, imageUrl, description)"
                 + " VALUES (?,?,?)";
-
         try {
             Connection con = db.openConnection();
             PreparedStatement statement = con.prepareStatement(sql);
@@ -263,11 +269,11 @@ public class ProductDAO {
     public void updateProduct(Product product, ImageProduct imageProduct) {
         DateTimeUtils utils = new DateTimeUtils();
         String sql = """
-                     UPDATE Product SET supplierId = ?,categoryId =?,productName = ?,quantityPerUnit=?,unitPrice=?,isDiscount = ?,description=?, releaseDate = ?,discount=?, status = ?
-                      WHERE productId = ?""";
+                UPDATE Product SET supplierId = ?,categoryId =?,productName = ?,quantityPerUnit=?,unitPrice=?,isDiscount = ?,description=?, releaseDate = ?,discount=?, status = ?
+                 WHERE productId = ?""";
         try (Connection con = db.openConnection()) {
             PreparedStatement statement = con.prepareStatement(sql);
-            
+
             statement.setInt(1, product.getSupplierId());
             statement.setInt(2, product.getCategoryId());
             statement.setNString(3, product.getProductName());
@@ -286,13 +292,12 @@ public class ProductDAO {
             Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
-    public int getMaxId (){
+
+    public int getMaxId() {
         int id = 0;
         String sql = "SELECT MAX(productId) FROM Product";
-        try{
-            Connection con =db.openConnection();
+        try {
+            Connection con = db.openConnection();
             PreparedStatement statement = con.prepareStatement(sql);
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
@@ -301,60 +306,228 @@ public class ProductDAO {
             rs.close();
             statement.close();
             con.close();
-            
-        }catch(Exception ex){
+
+        } catch (Exception ex) {
             Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
 
         }
         return id;
     }
-    public Product getProduct (int id){
+
+    public Product getProduct(int id) {
         String sql = "SELECT * FROM Product WHERE productId=?";
         Product p = new Product();
-        
-            try (Connection con = db.openConnection()) {
-                PreparedStatement statement = con.prepareStatement(sql);
-                ResultSet rs = statement.executeQuery();
-                if (rs.next()) {
-                    int productId = rs.getInt("productId");
-                    int supplierId = rs.getInt("supplierId");
-                    int categoryId = rs.getInt("categoryId");
-                    String productName = rs.getNString("productName");
-                    int quantityPerUnit = rs.getInt("quantityPerUnit");
-                    int unitPrice = rs.getInt("unitPrice");
-                    int unitInStock = rs.getInt("unitInStock");
-                    int quantitySold = rs.getInt("quantitySold");
-                    int starRating = rs.getInt("starRating");
-                    boolean isDiscount = rs.getBoolean("isDiscount");
-                    String description = rs.getNString("description");
-                    Date releaseDate = rs.getDate("releaseDate");
-                    float discount = rs.getFloat("discount");
-                    boolean status = rs.getBoolean("status");
-                    p = new Product(productId, supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, quantitySold, starRating, isDiscount, description, releaseDate, discount, status);
-                }
-                rs.close();
-                statement.close();
-            
-            
-        }catch(Exception ex){
+
+        try (Connection con = db.openConnection()) {
+            PreparedStatement statement = con.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                int productId = rs.getInt("productId");
+                int supplierId = rs.getInt("supplierId");
+                int categoryId = rs.getInt("categoryId");
+                String productName = rs.getNString("productName");
+                int quantityPerUnit = rs.getInt("quantityPerUnit");
+                int unitPrice = rs.getInt("unitPrice");
+                int unitInStock = rs.getInt("unitInStock");
+                int quantitySold = rs.getInt("quantitySold");
+                int starRating = rs.getInt("starRating");
+                boolean isDiscount = rs.getBoolean("isDiscount");
+                String description = rs.getNString("description");
+                Date releaseDate = rs.getDate("releaseDate");
+                float discount = rs.getFloat("discount");
+                boolean status = rs.getBoolean("status");
+                p = new Product(productId, supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock,
+                        quantitySold, starRating, isDiscount, description, releaseDate, discount, status);
+            }
+            rs.close();
+            statement.close();
+
+        } catch (Exception ex) {
             Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
 
         }
         return p;
     }
-    
-//    public void deleteProduct(int productId){
-//        String sql = "DELETE FROM Product WHERE productId=?";
-//        try{
-//            Connection con = db.openConnection();
-//            PreparedStatement statement = con.prepareStatement(sql);
-//            int id = Integer.parseInt(idd);
-//            statement.setInt(1, id);
-//            statement.execute();
-//            con.close();
-//            statement.close();  
-//        }catch(Exception ex){
-//            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE,null, ex);
-//        }
-//    }
+
+    // public void deleteProduct(int productId){
+    // String sql = "DELETE FROM Product WHERE productId=?";
+    // try{
+    // Connection con = db.openConnection();
+    // PreparedStatement statement = con.prepareStatement(sql);
+    // int id = Integer.parseInt(idd);
+    // statement.setInt(1, id);
+    // statement.execute();
+    // con.close();
+    // statement.close();
+    // }catch(Exception ex){
+    // Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE,null, ex);
+    // }
+    // }
+    public ArrayList<Product> getLaptopProducts() {
+        ArrayList<Product> laptopList = new ArrayList<>();
+        String sql = "SELECT * FROM Product WHERE categoryId = 1"; // Assuming categoryId 1 represents laptops
+        try {
+            Connection con = db.openConnection();
+            PreparedStatement statement = con.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+
+                int productId = rs.getInt(1);
+                int supplierId = rs.getInt(2);
+                int categoryId = rs.getInt(3);
+                String productName = rs.getNString(4);
+                int quantityPerUnit = rs.getInt(5);
+                int unitPrice = rs.getInt(6);
+                int unitInStock = rs.getInt(7);
+                int quantitySold = rs.getInt(8);
+                int starRating = rs.getInt(9);
+                boolean isDiscount = rs.getBoolean(10);
+                String description = rs.getNString(11);
+                Date releaseDate = rs.getDate(12);
+                float discount = rs.getFloat(13);
+                boolean status = rs.getBoolean(14);
+                ArrayList<ImageProduct> imageList = getImageProduct(productId);
+
+                Product p = new Product(productId, supplierId, categoryId, productName, quantityPerUnit, unitPrice,
+                        unitInStock, quantitySold, starRating, isDiscount, description, releaseDate, discount, status,
+                        imageList);
+                laptopList.add(p);
+            }
+
+            rs.close();
+            statement.close();
+            con.close();
+        } catch (Exception ex) {
+            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return laptopList;
+    }
+
+    public ArrayList<Product> getTabletProducts() {
+        ArrayList<Product> tabletList = new ArrayList<>();
+        String sql = "SELECT * FROM Product WHERE categoryId = 2"; // Assuming categoryId 2 represents tablets
+
+        try {
+            Connection con = db.openConnection();
+            PreparedStatement statement = con.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                int productId = rs.getInt(1);
+                int supplierId = rs.getInt(2);
+                int categoryId = rs.getInt(3);
+                String productName = rs.getNString(4);
+                int quantityPerUnit = rs.getInt(5);
+                int unitPrice = rs.getInt(6);
+                int unitInStock = rs.getInt(7);
+                int quantitySold = rs.getInt(8);
+                int starRating = rs.getInt(9);
+                boolean isDiscount = rs.getBoolean(10);
+                String description = rs.getNString(11);
+                Date releaseDate = rs.getDate(12);
+                float discount = rs.getFloat(13);
+                boolean status = rs.getBoolean(14);
+                ArrayList<ImageProduct> imageList = getImageProduct(productId);
+
+                Product p = new Product(productId, supplierId, categoryId, productName, quantityPerUnit, unitPrice,
+                        unitInStock, quantitySold, starRating, isDiscount, description, releaseDate, discount, status,
+                        imageList);
+                tabletList.add(p);
+            }
+
+            rs.close();
+            statement.close();
+            con.close();
+        } catch (Exception ex) {
+            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return tabletList;
+    }
+
+    public ArrayList<Product> getPCProducts() {
+        ArrayList<Product> pcList = new ArrayList<>();
+        String sql = "SELECT * FROM Product WHERE categoryId = 3"; // Assuming categoryId 3 represents PCs
+
+        try {
+            Connection con = db.openConnection();
+            PreparedStatement statement = con.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                int productId = rs.getInt(1);
+                int supplierId = rs.getInt(2);
+                int categoryId = rs.getInt(3);
+                String productName = rs.getNString(4);
+                int quantityPerUnit = rs.getInt(5);
+                int unitPrice = rs.getInt(6);
+                int unitInStock = rs.getInt(7);
+                int quantitySold = rs.getInt(8);
+                int starRating = rs.getInt(9);
+                boolean isDiscount = rs.getBoolean(10);
+                String description = rs.getNString(11);
+                Date releaseDate = rs.getDate(12);
+                float discount = rs.getFloat(13);
+                boolean status = rs.getBoolean(14);
+                ArrayList<ImageProduct> imageList = getImageProduct(productId);
+
+                Product p = new Product(productId, supplierId, categoryId, productName, quantityPerUnit, unitPrice,
+                        unitInStock, quantitySold, starRating, isDiscount, description, releaseDate, discount, status,
+                        imageList);
+                pcList.add(p);
+            }
+
+            rs.close();
+            statement.close();
+            con.close();
+        } catch (Exception ex) {
+            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return pcList;
+    }
+
+    public ArrayList<Product> getScreenProducts() {
+        ArrayList<Product> screenList = new ArrayList<>();
+        String sql = "SELECT * FROM Product WHERE categoryId = 4"; // Assuming categoryId 4 represents screens
+
+        try {
+            Connection con = db.openConnection();
+            PreparedStatement statement = con.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                int productId = rs.getInt(1);
+                int supplierId = rs.getInt(2);
+                int categoryId = rs.getInt(3);
+                String productName = rs.getNString(4);
+                int quantityPerUnit = rs.getInt(5);
+                int unitPrice = rs.getInt(6);
+                int unitInStock = rs.getInt(7);
+                int quantitySold = rs.getInt(8);
+                int starRating = rs.getInt(9);
+                boolean isDiscount = rs.getBoolean(10);
+                String description = rs.getNString(11);
+                Date releaseDate = rs.getDate(12);
+                float discount = rs.getFloat(13);
+                boolean status = rs.getBoolean(14);
+                ArrayList<ImageProduct> imageList = getImageProduct(productId);
+
+                Product p = new Product(productId, supplierId, categoryId, productName, quantityPerUnit, unitPrice,
+                        unitInStock, quantitySold, starRating, isDiscount, description, releaseDate, discount, status,
+                        imageList);
+                screenList.add(p);
+            }
+
+            rs.close();
+            statement.close();
+            con.close();
+        } catch (Exception ex) {
+            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return screenList;
+    }
+
 }
