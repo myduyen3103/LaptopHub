@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <%@include file="/LaptopHubWeb/web/includes/header.jsp" %>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang thông tin cá nhân</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <img src="/picture/header.PNG" width="1350px">
+    </header>
+    <div class="container row" >
+        <div class="header col-md-3">
+            <h1>Nguyễn Văn A</h1>
+            <p>ID: COA</p>
+        </div>
+        <h1 style="margin-left: 250px;" class="col-md-7">Thông tin cá nhân</h1>
+    </div>
+
+    <div class="container row">
+        <div id="menu-left" >
+            <ul>
+                <li><a href="#">Tài khoản của tôi</a></li>
+                <li><a href="#">Giỏ hàng</a></li>
+                <li><a href="#">Hỗ trợ khách hàng</a></li>
+            </ul>
+        </div>
+        <div id="user-info">
+            <p>Họ và tên: Nguyễn Văn A</p>
+            <p>Giới tính: Nam</p>
+            <p>Ngày sinh: 01/01/1900</p>
+            <p>Số điện thoại: 0987654321</p>
+            <p>Email: DAL@gmail.com</p>
+            <p>Địa chỉ: khu đô thị FPT Đà Nẵng Hòa Hải Ngũ Hành Sơn <p>
+        </div>
+    </div>
+    <br>
+    <div id="account-actions">
+        <a href="#">Cập nhật tài khoản</a>
+        <a href="#">Đăng xuất</a>
+        <a href="#">Đổi mật khẩu</a>
+    </div>
+    <%@include file="/includes/footer.jsp" %>
+
+</body>
+
+</html>
+<style>
+    body {
+        font-family: sans-serif;
+    }
+
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px;
+        display: flex;
+    }
+
+    .container.p {
+        display: flex;
+    }
+
+    .header {
+        text-align: center;
+
+    }
+
+    .header h1 {
+        font-size: 24px;
+
+    }
+
+    .header p {
+        font-size: 16px;
+        color: #666;
+    }
+
+    .info {
+        margin-bottom: 20px;
+    }
+
+    .info p {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .actions {
+        display: flex;
+        ;
+    }
+
+    .actions button {
+        padding: 10px 20px;
+        margin: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .actions button:hover {
+        background-color: #eee;
+    }
+
+    buttonFunction {
+        display: row;
+    }
+
+    #menu-left {
+        width: 250px;
+        padding: 20px;
+    }
+
+    #menu-left h3 {
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    #menu-left ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    #menu-left li {
+        margin-bottom: 15px;
+    }
+
+    #menu-left a {
+        display: block;
+        padding: 10px;
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
+        border: 1px solid #ccc;
+        padding: 10px 20px;
+        text-decoration: none;
+        color: #333;
+        border-radius: 20px;
+    }
+
+    #menu-left a:hover {
+        background-color: #eee;
+    }
+
+    #account-actions {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    #account-actions a {
+        display: inline-block;
+        margin: 0 10px;
+        padding: 10px 20px;
+        border: 1px solid #ccc;
+        text-decoration: none;
+        color: #333;
+    }
+
+    #account-actions a:hover {
+        background-color: #eee;
+    }
+
+    #user-info {
+        float: right;
+        margin-left: 60px;
+        font-size: 20px;
+    }
+</style>
