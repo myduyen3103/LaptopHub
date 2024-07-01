@@ -67,6 +67,7 @@ public class ProductManagement extends HttpServlet {
                     listProduct(request, response);
                     break;
                 case "LOAD":
+                    loadProduct(request, response);
                     break;
                 case "UPDATE":
                     break;
@@ -130,13 +131,19 @@ public class ProductManagement extends HttpServlet {
     public void loadProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         int productId = Integer.parseInt(request.getParameter("productId"));
-        Product p = prodDao.getProduct(productId);
+        Product p = prodDao.getProductById(productId);
         p.setImageList(prodDao.getImageProduct(productId));
+        
         request.setAttribute("THE_PRODUCT", p);
-        request.getRequestDispatcher("update-product-form").forward(request, response);
+//        out.print(p);
+//        out.print(p.getDescription());
+
+        request.getRequestDispatcher("dashboard/update-product-form.jsp").forward(request, response);
+    
     }
     public void updateProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         PrintWriter out = response.getWriter();
+        
     }
 
 }

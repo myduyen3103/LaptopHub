@@ -317,7 +317,6 @@ public class ProductDAO {
     public Product getProduct(int id) {
         String sql = "SELECT * FROM Product WHERE productId=?";
         Product p = new Product();
-
         try (Connection con = db.openConnection()) {
             PreparedStatement statement = con.prepareStatement(sql);
             ResultSet rs = statement.executeQuery();
@@ -529,5 +528,8 @@ public class ProductDAO {
 
         return screenList;
     }
-
+    public static void main(String[] args) {
+        ProductDAO p = new ProductDAO();
+        System.out.println(p.getProductById(1));
+    }
 }

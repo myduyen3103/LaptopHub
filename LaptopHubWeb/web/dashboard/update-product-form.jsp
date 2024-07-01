@@ -79,11 +79,11 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Tên sản phẩm</label>
-                                    <input type="text" class="form-control" placeholder="Nhập tên sản phẩm" name="productName" value="${THE_PRODUCT.name}">
+                                    <input type="text" class="form-control" name="productName" value="${THE_PRODUCT.getProductName()}">
                                 </div>
                                 <div class="form-group">
                                     <label>Mô tả sản phẩm</label>
-                                    <textarea class="form-control" rows="9" cols ="10" placeholder="Nhập mô tả" name="description" value="${THE_PRODUCT.description}"></textarea>
+                                    <textarea class="form-control" rows="9" cols ="10" name="description" value="${THE_PRODUCT.getDescription()}"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Phân loại</label>
@@ -121,11 +121,11 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label>Giá tiền/chiếc</label>
-                                            <input type="number" class="form-control" placeholder="Nhập giá" name = "unitPrice" value="${THE_PRODUCT.getUnitPrice()}">
+                                            <input type="number" class="form-control" name = "unitPrice" value="${THE_PRODUCT.getUnitPrice()}">
                                         </div>
                                         <div class="form-group">
-                                            <label>Số lượng</label>
-                                            <input type="number" class="form-control" placeholder="Nhập số lượng" name = "quantity" value="${THE_PRODUCT.getQuantityPerUnit()}">
+                                            <label>Số lượng</label> 
+                                            <input type="number" class="form-control" name = "quantity" value="${THE_PRODUCT.getQuantityPerUnit()}">
                                         </div>
                                         <div class="form-group">
                                             <label>Giảm giá</label>

@@ -225,7 +225,7 @@ public class Product implements Serializable{
     }
 
     public String getDescription() {
-        return description;
+        return description.replace("</br>", ".");
     }
 
     public void setDescription(String description) {
