@@ -5,8 +5,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-
-        <title>Laptop Products</title>
+        <title>${category} Products</title>
         <link rel="stylesheet" type="text/css" href="css/product.css">
         <script src="JavaScript/sortProducts.js"></script>
     </head>
@@ -25,7 +24,7 @@
             
             <div class="all-product">
                 <div class="title">
-                    <h2>Laptop</h2>
+                    <h2>${category}</h2>
                 </div>
                 <div class="custom-dropdown">
                     <button class="custom-dropbtn">Sắp xếp theo giá</button>
@@ -35,7 +34,7 @@
                     </div>
                 </div>
                 <div class="main-product">
-                    <c:forEach var="product" items="${laptopProducts}">
+                    <c:forEach var="product" items="${products}">
                         <div class="each-product">
                             <div class="image">
                                 <c:forEach var="img" items="${product.getImageList()}">
@@ -58,5 +57,6 @@
             </div>
 
             <%@include file="/includes/footer.jsp" %>
-</body>
+        </div>
+    </body>
 </html>

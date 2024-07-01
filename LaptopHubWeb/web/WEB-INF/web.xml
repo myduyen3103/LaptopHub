@@ -276,7 +276,6 @@
         <servlet-name>Top10SellerProduct</servlet-name>
         <url-pattern>/Top10SellerProduct</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>ProductDetail</servlet-name>
         <url-pattern>/ProductDetail</url-pattern>
