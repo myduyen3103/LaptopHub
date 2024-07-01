@@ -140,6 +140,10 @@
         <servlet-name>Top10SellerProduct</servlet-name>
         <servlet-class>laptophub.controller.admin.statistic.Top10SellerProduct</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProductDetail</servlet-name>
+        <servlet-class>laptophub.controller.web.shop.ProductDetail</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddAccountServlet</servlet-name>
         <url-pattern>/AddAccountServlet</url-pattern>
@@ -271,5 +275,10 @@
     <servlet-mapping>
         <servlet-name>Top10SellerProduct</servlet-name>
         <url-pattern>/Top10SellerProduct</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>ProductDetail</servlet-name>
+        <url-pattern>/ProductDetail</url-pattern>
     </servlet-mapping>
 </web-app>

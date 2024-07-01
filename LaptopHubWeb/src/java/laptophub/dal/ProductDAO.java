@@ -106,8 +106,48 @@ public class ProductDAO {
         }
         return prdList;
     }
-
-    public ArrayList<ImageProduct> getImageProduct(int prdId) {
+    
+    public Product getProductById(int id){
+        Product p = null;
+        
+        String sql = "SELECT [productId],[supplierId],[categoryId],[productName],[quantityPerUnit],[unitPrice],[unitInStock], " +
+                                      "[quantitySold],[starRating],[isDiscount],[description],[releaseDate],[discount],[status] " +
+                                      " FROM [Product] " +
+                                      " WHERE productId = ?";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            Connection con = db.openConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1,id);
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+                int productId = rs.getInt("productId");
+                int supplierId = rs.getInt("supplierId");
+                int categoryId = rs.getInt("categoryId");
+                String productName = rs.getNString("productName");
+                int quantityPerUnit = rs.getInt("quantityPerUnit");
+                int unitPrice = rs.getInt("unitPrice");
+                int unitInStock = rs.getInt("unitInStock");
+                int quantitySold = rs.getInt("quantitySold");
+                int starRating = rs.getInt("starRating");
+                boolean isDiscount = rs.getBoolean("isDiscount");
+                String description = rs.getNString("description");
+                Date releaseDate = rs.getDate("releaseDate");
+                float discount = rs.getFloat("discount");
+                boolean status = rs.getBoolean("status");
+                ArrayList<ImageProduct> imageList = getImageProduct(productId);
+                p = new Product(productId, supplierId, categoryId, productName, quantityPerUnit, unitPrice, unitInStock, quantitySold, starRating, isDiscount, description, releaseDate, discount, status, imageList);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return p;
+    }
+    
+    public ArrayList<ImageProduct> getImageProduct(int prdId){
         ArrayList<ImageProduct> imgList = new ArrayList<>();
         String sql = "SELECT [imageId], [productId] ,[imageUrl] ,[description] "
                 + "  FROM [ImageProduct] "
