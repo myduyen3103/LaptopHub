@@ -29,22 +29,6 @@
         <servlet-class>laptophub.controller.admin.management.supplier.EditSupplier</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AddProduct</servlet-name>
-        <servlet-class>laptophub.controller.admin.management.product.AddProduct</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>DeleteProduct</servlet-name>
-        <servlet-class>laptophub.controller.admin.management.product.DeleteProduct</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>UpdateProduct</servlet-name>
-        <servlet-class>laptophub.controller.admin.management.product.UpdateProduct</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>SearchProduct</servlet-name>
-        <servlet-class>laptophub.controller.admin.management.product.SearchProduct</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ManageOrder</servlet-name>
         <servlet-class>laptophub.controller.admin.management.order.ManageOrder</servlet-class>
     </servlet>
@@ -143,6 +127,14 @@
     <servlet>
         <servlet-name>ProductManagement</servlet-name>
         <servlet-class>laptophub.controller.admin.management.product.ProductManagement</servlet-class>
+        <multipart-config>
+            <max-file-size>1048576</max-file-size>
+            <!-- 1MB -->
+            <max-request-size>2097152</max-request-size>
+            <!-- 2MB -->
+            <file-size-threshold>512000</file-size-threshold>
+            <!-- 500KB -->
+        </multipart-config>
     </servlet>
     <servlet>
         <servlet-name>Top10SellerProduct</servlet-name>
@@ -175,22 +167,6 @@
     <servlet-mapping>
         <servlet-name>EditSupplier</servlet-name>
         <url-pattern>/EditSupplier</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AddProduct</servlet-name>
-        <url-pattern>/AddProduct</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DeleteProduct</servlet-name>
-        <url-pattern>/DeleteProduct</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UpdateProduct</servlet-name>
-        <url-pattern>/UpdateProduct</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SearchProduct</servlet-name>
-        <url-pattern>/SearchProduct</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ManageOrder</servlet-name>
@@ -296,10 +272,4 @@
         <servlet-name>Top10SellerProduct</servlet-name>
         <url-pattern>/Top10SellerProduct</url-pattern>
     </servlet-mapping>
-    <multipart-config>
-        <location>/tmp</location>
-        <max-file-size>20848820</max-file-size>
-        <max-request-size>418018841</max-request-size>
-        <file-size-threshold>1048576</file-size-threshold>
-    </multipart-config>
 </web-app>

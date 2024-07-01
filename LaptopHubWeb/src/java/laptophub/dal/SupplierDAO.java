@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import laptophub.model.Category;
 import laptophub.model.Supplier;
 import laptophub.model.User;
 import laptophub.utils.DBConnection;
@@ -20,15 +21,14 @@ import laptophub.utils.DBConnection;
  * @author admin
  */
 public class SupplierDAO {
-     private final DBConnection dbConnection;
+     private final DBConnection db;
 
     public SupplierDAO() {
-        dbConnection = DBConnection.getInstance();
+        db = DBConnection.getInstance();
     }
 
     public List<Supplier> getAllSupplier() {
         List<Supplier> supplierList = new ArrayList<>();
-        DBConnection db = DBConnection.getInstance();
         String sql = "SELECT * FROM [dbo].[Supplier]";
         try {
             Connection con = db.openConnection();
@@ -54,5 +54,36 @@ public class SupplierDAO {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return supplierList;
+    }
+    public Supplier getSupplierByName(String supplierName){
+        
+        String sql = """
+                     SELECT supplierId, companyName, homePage, country, imageLogo
+                     FROM Supplier WHERE companyName = ?""";
+        
+        Supplier supplier = null;
+        
+        try {
+            Connection con = db.openConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setNString(1, supplierName);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                int supplierId = rs.getInt(1);
+                supplierName = rs.getNString(2);
+                String homePage = rs.getNString(3);
+                String country = rs.getNString(4);
+                String image = rs.getNString(5);
+                supplier = new Supplier(supplierId, homePage, homePage, country, image);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(SupplierDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return supplier;
+    }
+    public static void main(String[] args) {
+        SupplierDAO dao = new SupplierDAO();
+        System.out.println(dao.getSupplierByName("ASUS"));
     }
 }

@@ -1,10 +1,12 @@
 <%-- 
     Document   : add-product-form
     Created on : Jun 25, 2024, 9:11:48 PM
-    Author     : admin
+    Author     : myduyen
 --%>
 
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -38,12 +40,12 @@
                 width: 100%;
                 min-width: 450px;
                 position: relative;
-                margin:  50px auto;
-                padding: 50px 20px;
+                margin:  10px auto;
+                padding: 0px 20px;
                 border-radius: 7px;
                 box-shadow: 0 20px 35px rgba(0,0,0,0.05);
             }
-            
+
             .label{
                 display: block;
                 position: relative;
@@ -61,10 +63,13 @@
     </head>
     <body>
         <%@include file="../includes/header.jsp" %>
-        <form action="../ProductManagement" method="post" enctype="multipart/form-data">
+        <form action="../ProductManagement" method="get" enctype="multipart/form-data">
+            <input type="hidden" name="command" value="UPDATE">
+            <input type="hidden" name="productId"
+                   value="">
             <!--<input type="hidden" name="command" value="ADD" />-->
             <div class="container mt-5" >
-                <h2 class="mb-4" style="padding-left: 50px; padding-top: 50px">Thêm sản phẩm</h2>
+                <h2 class="mb-4" style="padding-left: 50px; padding-top: 50px">Cập nhật sản phẩm mới</h2>
                 <div class="row">
                     <div class="col-md-8">
                         <div class="card mb-4">
@@ -74,16 +79,16 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Tên sản phẩm</label>
-                                    <input type="text" class="form-control" placeholder="Nhập tên sản phẩm" name="productName">
+                                    <input type="text" class="form-control" placeholder="Nhập tên sản phẩm" name="productName" value="${THE_PRODUCT.name}">
                                 </div>
                                 <div class="form-group">
                                     <label>Mô tả sản phẩm</label>
-                                    <textarea class="form-control" rows="9" cols ="10" placeholder="Nhập mô tả" name="description"></textarea>
+                                    <textarea class="form-control" rows="9" cols ="10" placeholder="Nhập mô tả" name="description" value="${THE_PRODUCT.description}"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Phân loại</label>
                                     <div class="form-group">
-                                        <select class="form-control" name="category">
+                                        <select class="form-control" name="category" value="${THE_PRODUCT.getCategoryString()}">
                                             <option>Chọn phân loại</option>
                                             <option >Máy tính bảng</option>
                                             <option >Máy tính xách tay</option>
@@ -95,7 +100,7 @@
                                 <div class="form-group">
                                     <label>Nhà sản xuất</label>
                                     <div class="form-group">
-                                        <select class="form-control" name = "supplier">
+                                        <select class="form-control" name = "supplier" value="${THE_PRODUCT.getSupplierString()}">
                                             <option>Chọn nhà sản xuất</option>
                                             <option>DELL</option>
                                             <option>ASUS</option>
@@ -116,15 +121,15 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label>Giá tiền/chiếc</label>
-                                            <input type="number" class="form-control" placeholder="Nhập giá" name = "unitPrice">
+                                            <input type="number" class="form-control" placeholder="Nhập giá" name = "unitPrice" value="${THE_PRODUCT.getUnitPrice()}">
                                         </div>
                                         <div class="form-group">
                                             <label>Số lượng</label>
-                                            <input type="number" class="form-control" placeholder="Nhập số lượng" name = "quantity">
+                                            <input type="number" class="form-control" placeholder="Nhập số lượng" name = "quantity" value="${THE_PRODUCT.getQuantityPerUnit()}">
                                         </div>
                                         <div class="form-group">
                                             <label>Giảm giá</label>
-                                            <select class="form-control" name = "isDiscount">
+                                            <select class="form-control" name = "isDiscount" value="${THE_PRODUCT.getIsDiscount()}">
                                                 <option>Lựa chọn</option>
                                                 <option>Có</option>
                                                 <option>Không</option>
@@ -132,7 +137,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Phần trăm giảm giá</label>
-                                            <input type="number" class="form-control" placeholder="Nhập phần trăm giảm" name = "discount">
+                                            <input type="number" class="form-control" placeholder="Nhập phần trăm giảm" name = "discount" value="${THE_PRODUCT.getDiscount()}">
                                         </div>
                                     </div>
                                 </div>
@@ -141,33 +146,57 @@
                     </div>
 
                     <div class="col-md-4">
-                        Trạng thái mở bán: <select class="form-control" name = "status">
+                        Trạng thái mở bán: <select class="form-control" name = "status" value="${THE_PRODUCT.getIsStatus()}">
                             <option>Chọn trạng thái</option>
                             <option>Đang bán</option>
                             <option>Ngừng kinh doanh</option>
                         </select>
 
-                        <div class="card-header">
+                        
+
+                        <div class="container01">
+                            <div class="card-header">
                             Ảnh sản phẩm
                         </div>
-                        
-                        <div class="container01">
+                            <table border="1">
+                                <thead>
+                                    <tr>
+                                        <th>Hình ảnh</th>
+                                        <th>Mô tả</th>
+                                        <th>Xóa</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <c:forEach var= "image" items= "${THE_PRODUCT.getImageList()}" >
+                                        <c:url var="deleteImage" value="ProductManagement">
+                                            <c:param name="command" value="DELETE-IMAGE"></c:param>
+                                            <c:param name="imageId" value="${image.getImageId()}"></c:param>
+                                        </c:url>
+                                        <tr>
+                                            <td><img width="20px" height="20px" src="${image.getImageUrl()}" alt="alt"/></td>
+                                            <td>${image.getDescription()}</td>
+                                            <td><a href = "${deleteImage}">Xóa ảnh</a></td>
+                                        </tr>
+                                    </c:forEach>
+                                    </tbody>
+                            </table>
+                            <br><br>
                             <input type="file" name="file" multiple>
                             <label>
-                                <i class="fas fa-upload"></i> &nbsp; Chọn ảnh
+                                <i class="fas fa-upload"></i> &nbsp; Thêm ảnh mới
                             </label>
-                            
+
                         </div>
                         <input type="submit" class="btn btn-primary btn-block" value="Thêm sản phẩm">
-                        
+                        <a href="../ProductManagement" type="button" class="btn btn-secondary btn-block">Quay trở lại trang quản trị</a>
                     </div>
                 </div>
             </div>
-            
+
             <br><br>                    
         </form>
 
-        <a href="../ProductManagement" type="button" class="btn btn-secondary btn-block">Quay trở lại trang quản trị</a>
+        
         <%@include file="../includes/footer.jsp" %>
     </body>
 

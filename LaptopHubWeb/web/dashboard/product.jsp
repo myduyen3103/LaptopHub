@@ -102,6 +102,14 @@
                                     </thead>
                                     <tbody>
                                         <c:forEach var= "product" items= "${productList}" >
+                                            <c:url var="tempLink" value="ProductManagement">
+                                                <c:param name="command" value="LOAD"></c:param>
+                                                <c:param name="productId" value="${product.getProductId()}"></c:param>
+                                            </c:url>
+                                            <c:url var="deleteLink" value="ProductManagement">
+                                                <c:param name="command" value="DELETE"></c:param>
+                                                <c:param name="productId" value="${product.getProductId()}"></c:param>
+                                            </c:url>
                                             <tr>
                                                 <td>
                                                     <div class="flag">
@@ -115,23 +123,36 @@
                                                 <td>${product.getCategoryId()}</td>
                                                 <td>${product.getSupplierId()}</td>
                                                 <td>${product.getPricePerUnit()}</td>
+
                                                 <td>
                                                     <div class="form-button-action">
+                                                        <script type="text/javascript">
+                                                            function redirectToUpdate() {
+                                                                window.location.href = '${tempLink}';
+                                                            }
+                                                        </script>
                                                         <button
                                                             type="button"
                                                             data-bs-toggle="tooltip"
                                                             title=""
                                                             class="btn btn-link btn-primary btn-lg"
                                                             data-original-title="Edit Task"
+                                                            onclick= "redirectToUpdate()"
                                                             >
                                                             <i class="fa fa-edit"></i>
                                                         </button>
+                                                        <script type="text/javascript">
+                                                            function redirectToDelete() {
+                                                                window.location.href = '${deleteLink}';
+                                                            }
+                                                        </script>
                                                         <button
                                                             type="button"
                                                             data-bs-toggle="tooltip"
                                                             title=""
                                                             class="btn btn-link btn-danger"
                                                             data-original-title="Remove"
+                                                            onclick= "redirectToDelete()"
                                                             >
                                                             <i class="fa fa-times"></i>
                                                         </button>
@@ -166,60 +187,59 @@
 <!-- Kaiadmin DEMO methods, don't include it in your project! -->
 <script src="assets/js/setting-demo2.js"></script>
 <script>
-                                        $(document).ready(function () {
-                                            $("#basic-datatables").DataTable({});
-                                            $("#multi-filter-select").DataTable({
-                                                pageLength: 5,
-                                                initComplete: function () {
-                                                    this.api()
-                                                            .columns()
-                                                            .every(function () {
-                                                                var column = this;
-                                                                var select = $(
-                                                                        '<select class="form-select"><option value=""></option></select>'
-                                                                        )
-                                                                        .appendTo($(column.footer()).empty())
-                                                                        .on("change", function () {
-                                                                            var val = $.fn.dataTable.util.escapeRegex($(this).val());
+        $(document).ready(function () {
+        $("#basic-datatables").DataTable({});
+        $("#multi-filter-select").DataTable({
+        pageLength: 5,
+        initComplete: function () {
+        this.api()
+        .columns()
+        .every(function () {
+        var column = this;
+        var select = $(
+        '<select class="form-select"><option value=""></option></select>'
+        )
+        .appendTo($(column.footer()).empty())
+        .on("change", function () {
+        var val = $.fn.dataTable.util.escapeRegex($(this).val());
 
-                                                                            column
-                                                                                    .search(val ? "^" + val + "$" : "", true, false)
-                                                                                    .draw();
-                                                                        });
+        column
+        .search(val ? "^" + val + "$" : "", true, false)
+        .draw();
+        });
 
-                                                                column
-                                                                        .data()
-                                                                        .unique()
-                                                                        .sort()
-                                                                        .each(function (d, j) {
-                                                                            select.append(
-                                                                                    '<option value="' + d + '">' + d + "</option>"
-                                                                                    );
-                                                                        });
-                                                            });
-                                                }
-                                            });
+         column
+        .data()
+        .unique()
+        .sort()
+        .each(function (d, j) {
+        select.append(
+            '<option value="' + d + '">' + d + "</option>"
+                );                                      });
+                          });
+              }
+          });
 
-                                            // Add Row
-                                            $("#add-row").DataTable({
-                                                pageLength: 5
-                                            });
+          // Add Row
+          $("#add-row").DataTable({
+              pageLength: 5
+          });
 
-                                            var action =
-                                                    '<td> <div class="form-button-action"> <button type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
+          var action =
+                  '<td> <div class="form-button-action"> <button type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
 
-                                            $("#addRowButton").click(function () {
-                                                $("#add-row")
-                                                        .dataTable()
-                                                        .fnAddData([
-                                                            $("#addName").val(),
-                                                            $("#addPosition").val(),
-                                                            $("#addOffice").val(),
-                                                            action
-                                                        ]);
-                                                $("#addRowModal").modal("hide");
-                                            });
-                                        });
+          $("#addRowButton").click(function () {
+              $("#add-row")
+                      .dataTable()
+                      .fnAddData([
+                          $("#addName").val(),
+                          $("#addPosition").val(),
+                          $("#addOffice").val(),
+                          action
+                      ]);
+              $("#addRowModal").modal("hide");
+          });
+      });
 </script>
 </body>
 </html>

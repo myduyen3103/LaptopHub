@@ -15,7 +15,7 @@
             name="viewport"
             />
         <!-- Fonts and icons -->
-        <script src="assets/js/plugin/webfont/webfont.min.js"></script>
+        <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
         <script>
             WebFont.load({
                 google: {families: ["Public Sans:300,400,500,600,700"]},
@@ -24,20 +24,20 @@
                         "Font Awesome 5 Solid",
                         "Font Awesome 5 Regular",
                         "Font Awesome 5 Brands",
-                        "simple-line-icons",
+                        "simple-line-icons"
                     ],
-                    urls: ["assets/css/fonts.min.css"],
+                    urls: ["../assets/css/fonts.min.css"]
                 },
                 active: function () {
                     sessionStorage.fonts = true;
-                },
+                }
             });
         </script>
 
         <!-- CSS Files -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="assets/css/plugins.min.css" />
-        <link rel="stylesheet" href="assets/css/kaiadmin.min.css" />
+        <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="../assets/css/plugins.min.css" />
+        <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
 
     </head>
     <body>
@@ -86,7 +86,7 @@
                         <tbody>
                           <tr>
                             <td><div class="avatar">
-                              <img src="assets/img/jm_denis.jpg" alt="..." class="avatar-img rounded-circle">
+                              <img src="../assets/img/jm_denis.jpg" alt="..." class="avatar-img rounded-circle">
                             </div></td>
                             <td>Tiger Nixon</td>
                             <td>System Architect</td>
@@ -377,18 +377,18 @@
       <!-- Custom template | don't include it in your project! -->
       
     <!--   Core JS Files   -->
-    <script src="assets/js/core/jquery-3.7.1.min.js"></script>
-    <script src="assets/js/core/popper.min.js"></script>
-    <script src="assets/js/core/bootstrap.min.js"></script>
+    <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
 
     <!-- jQuery Scrollbar -->
-    <script src="assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+    <script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
     <!-- Datatables -->
-    <script src="assets/js/plugin/datatables/datatables.min.js"></script>
+    <script src="../assets/js/plugin/datatables/datatables.min.js"></script>
     <!-- Kaiadmin JS -->
-    <script src="assets/js/kaiadmin.min.js"></script>
+    <script src="../assets/js/kaiadmin.min.js"></script>
     <!-- Kaiadmin DEMO methods, don't include it in your project! -->
-    <script src="assets/js/setting-demo2.js"></script>
+    <script src="../assets/js/setting-demo2.js"></script>
     <script>
       $(document).ready(function () {
         $("#basic-datatables").DataTable({});
@@ -421,12 +421,12 @@
                     );
                   });
               });
-          },
+          }
         });
 
         // Add Row
         $("#add-row").DataTable({
-          pageLength: 5,
+          pageLength: 5
         });
 
         var action =
@@ -439,7 +439,7 @@
               $("#addName").val(),
               $("#addPosition").val(),
               $("#addOffice").val(),
-              action,
+              action
             ]);
           $("#addRowModal").modal("hide");
         });

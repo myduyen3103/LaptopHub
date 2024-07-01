@@ -26,6 +26,11 @@ public class ImageProduct implements Serializable{
         this.description = description;
     }
 
+    public ImageProduct(int productId, String imageUrl, String description) {
+        this.productId = productId;
+        this.imageUrl = imageUrl;
+        this.description = description;
+    }
     public int getImageId() {
         return imageId;
     }
@@ -60,7 +65,7 @@ public class ImageProduct implements Serializable{
 
     @Override
     public String toString() {
-        return "ImageProduct{" + "imageId=" + imageId + ", productId=" + productId + ", imageUrl=" + imageUrl + ", description=" + description + '}';
+        return "imageId=" + imageId + "\n, productId=" + productId + "\n, imageUrl=" + imageUrl + "\n, description=" + description + '}';
     }
     
     

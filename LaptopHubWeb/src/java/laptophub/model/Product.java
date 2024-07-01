@@ -75,6 +75,37 @@ public class Product implements Serializable{
         setStatus(status);
         this.imageList = imageList;
     }
+
+    public Product(int supplierId, int categoryId, String productName, int quantityPerUnit, int unitPrice, boolean isDiscount, String description, Date releaseDate, float discount, boolean status) {
+        this.supplierId = supplierId;
+        this.categoryId = categoryId;
+        this.productName = productName;
+        this.quantityPerUnit = quantityPerUnit;
+        this.unitPrice = unitPrice;
+        this.isDiscount = isDiscount;
+        this.description = description;
+        this.releaseDate = releaseDate;
+        this.discount = discount;
+        this.status = status;
+    }
+
+    public Product(int productId, int supplierId, int categoryId, String productName, int quantityPerUnit, int unitPrice, int unitInStock, int quantitySold, int starRating, boolean isDiscount, String description, Date releaseDate, float discount, boolean status) {
+        this.productId = productId;
+        this.supplierId = supplierId;
+        this.categoryId = categoryId;
+        this.productName = productName;
+        this.quantityPerUnit = quantityPerUnit;
+        this.unitPrice = unitPrice;
+        this.unitInStock = unitInStock;
+        this.quantitySold = quantitySold;
+        this.starRating = starRating;
+        this.isDiscount = isDiscount;
+        this.description = description;
+        this.releaseDate = releaseDate;
+        this.discount = discount;
+        this.status = status;
+    }
+    
     
     public String getPricePerUnit(){
         MoneyUtils money = new MoneyUtils();
@@ -97,13 +128,48 @@ public class Product implements Serializable{
     public int getSupplierId() {
         return supplierId;
     }
-
+    public String getSupplierString() {
+        String supplier = "";
+        switch(categoryId){
+            case 1:supplier = "DELL";
+            break;
+            case 2:supplier = "ASUS";
+            break;
+            case 3:supplier = "APPLE";
+            break;
+            case 4:supplier = "ACER";
+            break;
+            case 5:supplier = "LENOVO";
+            break;
+            case 6:supplier = "HP";
+            break;
+            case 7:supplier = "SAMSUNG";
+            break;
+            
+        }
+        return supplier;
+    }
     public void setSupplierId(int supplierId) {
         this.supplierId = supplierId;
     }
 
     public int getCategoryId() {
         return categoryId;
+    }
+    public String getCategoryString() {
+        String category = "";
+        switch(categoryId){
+            case 1:category = "Máy tính xách tay";
+            break;
+            case 2:category = "Máy tính bảng";
+            break;
+            case 3:category = "Máy tính để bàn - CPU";
+            break;
+            case 4:category = "Màn hình rời";
+            break;
+            
+        }
+        return category;
     }
 
     public void setCategoryId(int categoryId) {
@@ -190,7 +256,7 @@ public class Product implements Serializable{
     }
 
     public String getIsStatus() {
-        return status?"Đang Kinh Doanh":"Ngừng Kinh Doanh";
+        return status?"Đang bán":"Ngừng Kinh Doanh";
     }
     public boolean getStatus() {
         return status;
@@ -227,7 +293,7 @@ public class Product implements Serializable{
 
     @Override
     public String toString() {
-        return "Product{" + "productId=" + productId + ", supplierId=" + supplierId + ", categoryId=" + categoryId + ", productName=" + productName + ", quantityPerUnit=" + quantityPerUnit + ", unitPrice=" + unitPrice+ ", unitInStock=" + unitInStock + ", quantitySold=" + quantitySold + ", starRating=" + starRating + ", isDiscount=" + isDiscount + ", description=" + description + ", releaseDate=" + releaseDate + ", discount=" + discount + ", status=" + status + ", imageList=" + imageList + '}';
+        return "Product\n" + "productId=" + productId + "\n, supplierId=" + supplierId + "\n, categoryId=" + categoryId + "\n, productName=" + productName + "\n, quantityPerUnit=" + quantityPerUnit + "\n, unitPrice=" + unitPrice+ "\n, unitInStock=" + unitInStock + "\n, quantitySold=" + quantitySold + "\n, starRating=" + starRating + "\n, isDiscount=" + isDiscount + "\n, description=" + description + "\n, releaseDate=" + releaseDate + "\n, discount=" + discount + "\n, status=" + status + "\n, imageList=" + imageList + '}';
     }
 
     

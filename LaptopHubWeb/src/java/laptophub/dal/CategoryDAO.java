@@ -50,4 +50,38 @@ public class CategoryDAO {
         }
         return categoryList;
     }
+    
+    public Category getCategoryByName(String categoryName){
+        
+        String sql = """
+                     SELECT categoryId, categoryName, description, imageCat
+                     From Category Where description = ?""";
+        
+        Category category = null;
+        
+        try {
+            Connection con = db.openConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setNString(1, categoryName);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                int categoryId = rs.getInt(1);
+                categoryName = rs.getNString(2);
+                String description = rs.getNString(3);
+                String imageCat = rs.getNString(4);
+                
+                category = new Category(categoryId, categoryName, description, imageCat);
+                
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return category;
+    }
+    
+    public static void main(String[] args) {
+        CategoryDAO dao = new CategoryDAO();
+        System.out.println(dao.getCategoryByName("Máy tính bảng"));
+    }
 }

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package laptophub.controller.admin.management.product;
 
 import java.io.PrintWriter;
@@ -9,39 +5,37 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import laptophub.dal.ProductDAO;
 import laptophub.model.Product;
-import org.apache.tomcat.util.http.fileupload.FileItem;
-import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
-import java.io.File;
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.List;
-
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
-
-import org.apache.commons.fileupload.FileItemFactory;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+import laptophub.dal.CategoryDAO;
+import laptophub.dal.SupplierDAO;
+import laptophub.model.ImageProduct;
+import laptophub.utils.DateTimeUtils;
+import laptophub.utils.ImageHandler;
 
 /**
  *
- * @author admin
+ * @author myduyen
  */
-//@WebServlet(name = "DashBoardServlet", urlPatterns = {"/admin/product"})
+@MultipartConfig
 public class ProductManagement extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    ImageHandler imageHandler = new ImageHandler();
+    DateTimeUtils dateUtils = new DateTimeUtils();
+    CategoryDAO cat = new CategoryDAO();
+    SupplierDAO sup = new SupplierDAO();
+    ProductDAO prodDao = new ProductDAO();
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -59,21 +53,10 @@ public class ProductManagement extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-        out.print("ĐÃ TRUY CẬP VÀO ĐÂY");
-        out.print("\n");
         try {
             String theCommand = request.getParameter("command");
             if (theCommand == null) {
@@ -81,121 +64,79 @@ public class ProductManagement extends HttpServlet {
             }
             switch (theCommand) {
                 case "LIST":
-
                     listProduct(request, response);
-                    break;
-                case "ADD":
-                    addProduct(request, response);
                     break;
                 case "LOAD":
                     break;
                 case "UPDATE":
-
+                    break;
+                case "DETAILS":
                     break;
                 case "DELETE":
-
                     break;
                 default:
-
             }
-        } catch (Exception ex) {
+        } catch (ServletException | IOException ex) {
             Logger.getLogger(ProductManagement.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
-        String savePath = "C:" + File.separator + SAVE_DIR;
-        File fileSaveDir = new File(savePath);
-        if (!fileSaveDir.exists()) {
-            fileSaveDir.mkdir();
-        }
-        String firstName = request.getParameter("firstname");
-        String lastName = request.getParameter("lastname");
-        Part part = request.getPart("file");
-        String fileName = extractFileName(part);
-        part.write(savePath + File.separator + fileName);
-        /* 
-        //You need this loop if you submitted more than one file 
-        for (Part part : request.getParts()) {
-        String fileName = extractFileName(part);
-        part.write(savePath + File.separator + fileName);
-    }*/
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306    /UploadFile", "root", "root");
-            String query = "INSERT INTO customerDetail (first_name, last_name, file) values (?, ?, ?)";
+            PrintWriter out = response.getWriter();
 
-            PreparedStatement pst;
-            pst = con.prepareStatement(query);
-            pst.setString(1, firstName);
-            pst.setString(2, lastName);
-            String filePath = savePath + File.separator + fileName;
-            pst.setString(3, filePath);
-            pst.executeUpdate();
-        } catch (Exception e) {
-        }
-    }
-    // file name of the upload file is included in content-disposition     header like this:
-//form-data; name="dataFile"; filename="PHOTO.JPG"
+            ArrayList<ImageProduct> imgList = new ArrayList<>();
+            String productName = request.getParameter("productName");
+            String description = request.getParameter("description");
+            String category = request.getParameter("category"); //id
+            int categoryId = cat.getCategoryByName(category).getCategoryId();
+            String supplier = request.getParameter("supplier"); //id
+            int supplierId = sup.getSupplierByName(supplier).getSupplierId();
+            int unitPrice = Integer.parseInt(request.getParameter("unitPrice"));
+            int quantity = Integer.parseInt(request.getParameter("quantity"));
+            boolean isDiscount = "Có".equals(request.getParameter("isDiscount"));
+            float discount = Float.parseFloat(request.getParameter("discount"));
+            boolean statusProduct = "Đang kinh doanh".equals(request.getParameter("status"));
+            Date releaseDate = dateUtils.converseDateNow(dateUtils.getDateNow());
+            Product p = new Product(supplierId, categoryId, productName, quantity, unitPrice, isDiscount, description, releaseDate, discount, statusProduct);
+            prodDao.addProduct(p);
 
-    private String extractFileName(Part part) {
-        String contentDisp = part.getHeader("content-disposition");
-        String[] items = contentDisp.split(";");
-        for (String s : items) {
-            if (s.trim().startsWith("filename")) {
-                return s.substring(s.indexOf("=") + 2, s.length() - 1);
+            Collection<Part> parts = request.getParts();
+            imgList = imageHandler.productImageUploadHandle(parts);
+            for (ImageProduct img : imgList) {
+                prodDao.insertImageProduct(img);
             }
+        } catch (ServletException | IOException e) {
+            response.getWriter().write("Error: " + e.getMessage());
+        } catch (ParseException ex) {
+            Logger.getLogger(ProductManagement.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return "";
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
     public void listProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-        ProductDAO product = new ProductDAO();
-        List<Product> productList = product.getAllProduct();
+        List<Product> productList = prodDao.getAllProduct();
         request.setAttribute("productList", productList);
         request.getRequestDispatcher("dashboard/product.jsp").forward(request, response);
     }
 
-    public void addProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void loadProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-//        String productName = request.getParameter("productName");
-//        String description = request.getParameter("description");
-//        String supplier = request.getParameter("supplier"); //id
-//        int unitPrice = Integer.parseInt(request.getParameter("unitPrice"));
-//        int quantity = Integer.parseInt(request.getParameter("quantity"));
-//        String category = request.getParameter("category"); //id
-
-        out.print(request.getParameter("imageUrl"));
-        out.print("\n");
-//        out.print(category);
-//                out.print("\n");
-//
-//        out.print(supplier);
-//                out.print("\n");
-
-//        out.print(request.getParameter("imageUrl"));
-        out.print("in gì đó");
+        int productId = Integer.parseInt(request.getParameter("productId"));
+        Product p = prodDao.getProduct(productId);
+        p.setImageList(prodDao.getImageProduct(productId));
+        request.setAttribute("THE_PRODUCT", p);
+        request.getRequestDispatcher("update-product-form").forward(request, response);
+    }
+    public void updateProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        PrintWriter out = response.getWriter();
     }
 
 }
