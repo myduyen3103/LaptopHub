@@ -1889,5 +1889,25 @@ UPDATE [dbo].[User]
 SET image = './images/avatar/default.jpg'
 WHERE status = 'True';
 
+INSERT INTO [dbo].[Order](date, userName, totalMoney, status, transactionId) VALUES 
+('2024-02-22', 'anhh', 34490000+2990000, 1, 1 );
+INSERT INTO [dbo].[OrderDetails] (orderId, productId, quantity, unitPrice, discount) VALUES 
+(5, 4, 1, 23390000, 0);
+INSERT INTO [dbo].[OrderDetails] (orderId, productId, quantity, unitPrice, discount) VALUES 
+(5, 2, 1, 22990000, 0);
+INSERT INTO [dbo].[Transaction](walletId, amount, createdDate, transactionType, status) VALUES
+(14, 23390000+22990000, '2024-02-25', N'Thanh toán online', 1);
 
+INSERT INTO [dbo].[Order](date, userName, totalMoney, status, transactionId) VALUES 
+('2024-01-10', 'tu', 2990000, 1, 1 );
+INSERT INTO [dbo].[Transaction](walletId, amount, createdDate, transactionType, status) VALUES
+(23, 23390000, '2024-03-20', N'Thanh toán online', 1);
+INSERT INTO [dbo].[OrderDetails] (orderId, productId, quantity, unitPrice, discount) VALUES 
+(11, 4, 1, 23390000, 0);
 
+INSERT INTO [dbo].[Order](date, userName, totalMoney, status, transactionId) VALUES 
+('2024-03-18', 'vu', 34490000, 1, 1 );
+INSERT INTO [dbo].[Transaction](walletId, amount, createdDate, transactionType, status) VALUES
+(4, 23390000+22990000, '2024-03-20', N'Thanh toán online', 1);
+INSERT INTO [dbo].[OrderDetails] (orderId, productId, quantity, unitPrice, discount) VALUES 
+(6, 3, 1, 28990000, 0);
